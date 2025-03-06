@@ -3,7 +3,77 @@ h1 {
   text-align: center;
 }
 
-div {
+#marioplaatje {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.mario {
+  background-color: red;
   text-align: center;
-  background-color: aqua;
+  height: 100px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10%;
+  margin-top: -70px;
+  padding-top: 90px;
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#luigiplaatje {
+  display: block;
+  margin-left: 30px;
+  margin-right: auto;
+  width: 15%;
+  margin-top: -269px;
+}
+
+.luigi {
+  background-color: rgb(6, 162, 6);
+  text-align: left;
+  height: 100px;
+  width: 150px;
+  display: block;
+  margin-right: auto;
+  border-radius: 10%;
+  margin-top: -70px;
+  padding-top: 90px;
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#toadplaatje {
+  display: block;
+  margin-left: auto;
+  margin-right: 30px;
+  width: 15%;
+  margin-top: -269px;
+}
+
+.toad {
+  background-color: rgb(226, 187, 70);
+  text-align: center;
+  height: 100px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  border-radius: 10%;
+  margin-top: -59px;
+  padding-top: 90px;
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
 }
