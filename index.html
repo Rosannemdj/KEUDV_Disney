@@ -4,48 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="javascript.js"></script>
+
     <title>Document</title>
   </head>
   <body>
-    <header>
-      <h1>Github</h1>
-    </header>
-
     <main>
-      <div>
-        <p>Repository = project</p>
-        <p>git Commit = opslaan van wijzingen</p>
-        <p>git Push = versturen van de wijzingen</p>
-        <p>git Pull = ophalen van de laatste versie</p>
+      <div class="main-container">
+        <div class="character-container">
+          <div class="character mario">
+            <img src="mario.png" alt="Mario" id="marioplaatje" />
+            <h2>Mario</h2>
+          </div>
+          <div class="character luigi">
+            <img src="luigi.webp" alt="Luigi" id="luigiplaatje" />
+            <h2>Luigi</h2>
+          </div>
+          <div class="character toad">
+            <img src="toad.png" alt="Toad" id="toadplaatje" />
+            <h2>Toad</h2>
+          </div>
+        </div>
       </div>
-
-      <div>
-        <p>Git branch</p>
-      </div>
-
-      <div>
-        <img src="mario.png" alt="" id="marioplaatje" />
-      </div>
-      <div class="mario">
-        <h2>Mario</h2>
-        <p></p>
-      </div>
-
-      <div>
-        <img src="luigi.webp" alt="" id="luigiplaatje" />
-      </div>
-
-      <div class="luigi">
-        <h2>Luigi</h2>
-      </div>
-
-      <div>
-        <img src="toad.png" alt="" id="toadplaatje" />
-      </div>
-
-      <div class="toad">
-        <h2>Toad</h2>
-      </div>
+      <button id="prev">Vorige</button>
+      <button id="next">Volgende</button>
     </main>
   </body>
 </html>
