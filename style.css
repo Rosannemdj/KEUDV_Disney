@@ -2,3 +2,8 @@ h1 {
   background-color: pink;
   text-align: center;
 }
+
+div {
+  text-align: center;
+  background-color: aqua;
+}
