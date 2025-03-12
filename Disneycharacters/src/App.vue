@@ -1,70 +1,104 @@
 <script setup>
-import characterKart from './components/characterKart.vue';
-
-import mario_png from './assets/images/mario.png';
-import luigi_webp from './assets/images/luigi.webp';
-import toad_png from './assets/images/toad.png';
+import characterKart from './components/characterKart.vue'
+import mario_png from './assets/images/mario.png'
+import luigi_webp from './assets/images/luigi.webp'
+import toad_png from './assets/images/toad.png'
+import sad_emoticon_jpg from './assets/images/sad_emoticon.jpg'
 </script>
 
 <template>
   <header>
+    <img src="./assets/images/logo.png" alt="Disney logo" />
+    <h1>Disney characters</h1>
   </header>
 
   <main>
     <div id="container">
       <template v-for="character in characters" :key="character.character">
-        <characterKart :backgroundcolor="character.backgroundcolor" :character="character.character"
-          :image="character.image" />
+        {{character.name}}
+        <characterKart
+          :character="character.name"
+          :image="character.imageUrl"
+        />
       </template>
     </div>
-    <h3>highlight</h3>
-    <characterKart :backgroundcolor="characters[currentCharacter].backgroundcolor"
-      :character="characters[currentCharacter].character" :image="characters[currentCharacter].image" />
-    <button @click=previousCharacter() >Vorig</button>
-    <button @click=nextCharacter() >Volgende</button>
+    <!-- <h3>highlight</h3>
+    <!-- <characterKart
+      :backgroundcolor="characters[currentCharacter].backgroundcolor"
+      :character="characters[currentCharacter].character"
+      :image="characters[currentCharacter].image"
+    /> -->
+    <!-- <button @click="previousCharacter()">Vorig</button>
+    <button @click="nextCharacter()">Volgende</button> --> 
   </main>
 </template>
-<script>
 
+<script>
 export default {
   data() {
     return {
-      characters: [
-        { backgroundcolor: "red", character: "Mario", image: mario_png },
-        { backgroundcolor: "green", character: "Luigi", image: luigi_webp },
-        { backgroundcolor: "rgb(226, 187, 70)", character: "Toad", image: toad_png }
-      ],
-      currentCharacter: 0
+      characters: [],
+      currentCharacter: 0,
     }
   },
   onMounted() {
-    console.log('onMounted');
+    console.log('onMounted')
   },
-  methods : {
-    nextCharacter(){
-      this.currentCharacter++;
+  mounted() {
+    console.log("sdfjkldsjfkldsf");
+    fetch('https://api.disneyapi.dev/character')
+      .then(response => response.json())
+      .then(resultFromApi => {
+        console.log(resultFromApi.data)
+        this.characters = resultFromApi.data
+      })
+  },
+  methods: {
+    nextCharacter() {
+      this.currentCharacter++
       if (this.currentCharacter >= this.characters.length) {
-        this.currentCharacter = 0;
+        this.currentCharacter = 0
       }
     },
-    previousCharacter(){
-      console.log('previousCharacter');	
-      this.currentCharacter--;
+    previousCharacter() {
+      console.log('previousCharacter')
+      this.currentCharacter--
       if (this.currentCharacter < 0) {
-        this.currentCharacter = this.characters.length - 1;
+        this.currentCharacter = this.characters.length - 1
       }
-    }
-  }
+    },
+  },
 }
-
 </script>
 
 <style scoped>
 #container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
+  margin-top: 200px;
+  margin-left:-300px;
+}
+
+header{
+  display: inline-flex;
+  grid-template-columns: 1fr 2fr;
+  column-width: 800px;
+  grid-gap:20px;
+}
+
+header img{
+width: 150px;
+height: 100px;
+}
+
+header h1{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top:40px;
+  
 }
 </style>

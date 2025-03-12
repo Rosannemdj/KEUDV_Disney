@@ -1,11 +1,14 @@
 <template>
-  <div class="character-container" >
-    <div class="character" :style="{ backgroundColor: backgroundcolor }">
-      <img :src=image alt="Mario" class="plaatje" />
+  <div class="character-container">
+    <div class="character">
+      <img v-if="image" :src="image" alt="Mario" class="plaatje" />
+      <img v-else src="@/assets/images/sad_emoticon.jpg" alt="Sad emoticon" class="plaatje" />
       <h2>{{ character }}</h2>
+      <h1> {{ film }}</h1>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: 'characterKart',
@@ -13,19 +16,15 @@ export default {
     backgroundcolor: String,
     character: String,
     image: String,
-  }
+  },
 }
 </script>
 
 <style scoped>
-
 .plaatje {
   width: 100px;
   position: absolute;
-
 }
-
-
 
 .character-container {
   display: flex;
@@ -36,21 +35,23 @@ export default {
 }
 
 .character {
-
   /* Standaard achtergrondkleur, overschrijf dit per karakter */
   text-align: center;
   height: 100px;
   width: 150px;
   border-radius: 10%;
-  padding-top: 90px;
+  padding-top: 80px;
   color: white;
   font-weight: bold;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   justify-content: center;
   align-items: flex-end;
   position: relative;
   margin: 0 7.5px;
-  transition: order 1s ease-in-out;
 }
+
+
 </style>
