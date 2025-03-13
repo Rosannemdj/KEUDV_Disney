@@ -4,6 +4,8 @@ import mario_png from './assets/images/mario.png'
 import luigi_webp from './assets/images/luigi.webp'
 import toad_png from './assets/images/toad.png'
 import sad_emoticon_jpg from './assets/images/sad_emoticon.jpg'
+import logo_png from './assets/images/logo.png'
+import Maincharacter from './components/Maincharacter.vue'
 </script>
 
 <template>
@@ -22,6 +24,7 @@ import sad_emoticon_jpg from './assets/images/sad_emoticon.jpg'
         />
       </template>
     </div>
+    <Maincharacter />
     <!-- <h3>highlight</h3>
     <!-- <characterKart
       :backgroundcolor="characters[currentCharacter].backgroundcolor"
@@ -46,7 +49,7 @@ export default {
   },
   mounted() {
     console.log("sdfjkldsjfkldsf");
-    fetch('https://api.disneyapi.dev/character')
+    fetch('https://api.disneyapi.dev/character?page=5&pageSize=50')
       .then(response => response.json())
       .then(resultFromApi => {
         console.log(resultFromApi.data)

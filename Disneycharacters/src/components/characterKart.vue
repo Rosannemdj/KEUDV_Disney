@@ -3,8 +3,7 @@
     <div class="character">
       <img v-if="image" :src="image" alt="Mario" class="plaatje" />
       <img v-else src="@/assets/images/sad_emoticon.jpg" alt="Sad emoticon" class="plaatje" />
-      <h2>{{ character }}</h2>
-      <h1> {{ film }}</h1>
+      <div class="character-name"><h2>{{ character }}</h2></div>
     </div>
   </div>
 </template>
@@ -24,7 +23,9 @@ export default {
 .plaatje {
   width: 100px;
   position: absolute;
+  border-radius: 10%;
 }
+
 
 .character-container {
   display: flex;
@@ -51,7 +52,9 @@ export default {
   align-items: flex-end;
   position: relative;
   margin: 0 7.5px;
+
 }
+
 
 
 </style>
