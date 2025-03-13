@@ -17,28 +17,51 @@ export default {
     return {
       allCharacters: [],
       filteredCharacters: [],
+      allCharactersWithDisorder: []
     };
   },
+
   mounted() {
-    this.fetchAndFilterCharacters();
+    this.fetchAndFilterCharacters(5);
   },
+
   methods: {
-    fetchAndFilterCharacters() {
-      fetch('https://api.disneyapi.dev/character?page=5&pageSize=50')
+    fetchAndFilterCharacters(page = 5) {
+
+      fetch(`https://api.disneyapi.dev/character?page=${page}&pageSize=50`)
         .then(response => response.json())
         .then(resultFromApi => {
           this.allCharacters = resultFromApi.data;  
+
+        
+          if (resultFromApi.info.nextPage) { 
+            this.fetchAndFilterCharacters(page + 1); 
+            // this.filterCharacters();
+
+
+        } 
+        // else {
+        //     this.filteredCharacters = allDisorderCharacters;
+        //     console.log(allDisorderCharacters)
+        //    }
           this.filterCharacters();
         })
     },
-    filterCharacters() {
+
+
+    filterCharacters(){
       const disorderMap = new Map(characterDisorders.map(item => [item.name, item.disorder]));
-      this.filteredCharacters = this.allCharacters.filter(character => 
+      let filteredCharacters = this.allCharacters.filter(character => 
         disorderMap.has(character.name)
-      ).map(character => ({
-        ...character,
-        disorder: disorderMap.get(character.name)
-      }));
+      ).map((character) => {
+        this.filteredCharacters.push({
+          ...character,
+          disorder: disorderMap.get(character.name)
+        });
+      });
+    //   console.log(filteredCharacters);
+    //   this.filteredCharacters.push(filteredCharacters);
+    //   console.log(this.filteredCharacters);
     }
   }
 }
