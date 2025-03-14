@@ -1,8 +1,8 @@
 <template>
     <div>
       <ul>
-        <li v-for="character in filteredCharacters" :key="character.id">
-          {{ character.name }} - {{ character.disorder || 'No disorder recorded' }}
+        <li v-for="character in Maincharacters" :key="character.id">
+          {{ character.name }} - {{ character.disorder || 'No disorder recorded' }} - {{ character.imageUrl }}
         </li>
       </ul>
     </div>
@@ -11,49 +11,50 @@
 
 <script>
 import characterDisorders from '../assets/characterdisorder.json';
-
 export default {
   data() {
     return {
-      allCharacters: [],
-      filteredCharacters: [],
-      allCharactersWithDisorder: []
-    };
+    Maincharacters: {},
+    filteredCharacters: [],
+     };
+     
   },
 
-  mounted() {
-    this.fetchAndFilterCharacters(5);
+   async mounted(){
+    await this.fetchdisorder();
+    console.log(this.Maincharacters);
   },
 
-  methods: {
-    fetchAndFilterCharacters(page = 5) {
-
-      fetch(`https://api.disneyapi.dev/character?page=${page}&pageSize=50`)
-        .then(response => response.json())
-        .then(resultFromApi => {
-          this.allCharacters = resultFromApi.data;  
-
-        
-          if (resultFromApi.info.nextPage) { 
-            this.fetchAndFilterCharacters(page + 1); 
-            // this.filterCharacters();
+  methods:{
+    
+    async fetchdisorder(){
+        for (var j of characterDisorders){
+            const c_name = j.name
+            console.log(c_name)
+            if (c_name!=null && c_name!=""){
+            
+            const url = `https://api.disneyapi.dev/character?name=${c_name}`
+            await fetch(url).then(response => response.json()).then(resultFromApi => {
+                console.log(resultFromApi)
+                if (resultFromApi.info.count > 0) {
+                this.Maincharacters[j.name]= resultFromApi.data;
+                this.Maincharacters[j.name]["disorder"]= j.disorder;
+                } else {
+                    this.Maincharacters[j.name]= {name: j.name, disorder: j.disorder};
+                }
+            })
 
 
         } 
-        // else {
-        //     this.filteredCharacters = allDisorderCharacters;
-        //     console.log(allDisorderCharacters)
-        //    }
-          this.filterCharacters();
-        })
+
+        }
+        console.log(this.Maincharacters)
     },
+  
 
-
-    filterCharacters(){
+    displayCharacters(){
       const disorderMap = new Map(characterDisorders.map(item => [item.name, item.disorder]));
-      let filteredCharacters = this.allCharacters.filter(character => 
-        disorderMap.has(character.name)
-      ).map((character) => {
+      let filteredCharacters = this.Maincharacters.map((character) => {
         this.filteredCharacters.push({
           ...character,
           disorder: disorderMap.get(character.name)
