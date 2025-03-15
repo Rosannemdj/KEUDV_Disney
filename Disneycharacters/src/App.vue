@@ -1,11 +1,6 @@
 <script setup>
 import characterKart from './components/characterKart.vue'
-import mario_png from './assets/images/mario.png'
-import luigi_webp from './assets/images/luigi.webp'
-import toad_png from './assets/images/toad.png'
-import sad_emoticon_jpg from './assets/images/sad_emoticon.jpg'
-import logo_png from './assets/images/logo.png'
-import Maincharacter from './components/Maincharacter.vue'
+import MainCharacter from './components/MainCharacter.vue'
 </script>
 
 <template>
@@ -17,22 +12,19 @@ import Maincharacter from './components/Maincharacter.vue'
   <main>
     <div id="container">
       <template v-for="character in characters" :key="character.character">
-        {{character.name}}
-        <characterKart
-          :character="character.name"
-          :image="character.imageUrl"
-        />
+        {{ character.name }}
+        <characterKart :character="character.name" :image="character.imageUrl" />
       </template>
     </div>
-    <Maincharacter />
+    <MainCharacter />
     <!-- <h3>highlight</h3>
-    <!-- <characterKart
+    <characterKart
       :backgroundcolor="characters[currentCharacter].backgroundcolor"
       :character="characters[currentCharacter].character"
       :image="characters[currentCharacter].image"
-    /> -->
-    <!-- <button @click="previousCharacter()">Vorig</button>
-    <button @click="nextCharacter()">Volgende</button> --> 
+    />
+   <button @click="previousCharacter()">Vorig</button>
+    <button @click="nextCharacter()">Volgende</button> -->
   </main>
 </template>
 
@@ -83,25 +75,25 @@ export default {
   flex-wrap: wrap;
   gap: 15px;
   margin-top: 200px;
-  margin-left:-300px;
+  margin-left: -300px;
 }
 
-header{
+header {
   display: inline-flex;
   grid-template-columns: 1fr 2fr;
   column-width: 800px;
-  grid-gap:20px;
+  grid-gap: 20px;
 }
 
-header img{
-width: 150px;
-height: 100px;
+header img {
+  width: 150px;
+  height: 100px;
 }
 
-header h1{
+header h1 {
   font-size: 20px;
   font-weight: bold;
-  margin-top:40px;
-  
+  margin-top: 40px;
+
 }
 </style>
