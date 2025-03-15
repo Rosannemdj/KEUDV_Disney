@@ -4,6 +4,7 @@ recorded".-->
 <script setup>
 import characterDisorders from '../assets/characterdisorder.json';
 import { toRaw } from 'vue';
+import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import { toRaw } from 'vue';
       <li v-for="character in mainCharacters" :key="character.id">
         {{ console.log(character.name, character.imageUrl) }}
         {{ character.name }} - {{ character.disorder || 'No disorder recorded' }} - {{ character.imageUrl }}
+        <character-kart :character="character" :image="character.imageUrl"></character-kart>
       </li>
     </ul>
   </div>

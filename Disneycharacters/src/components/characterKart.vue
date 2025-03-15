@@ -2,8 +2,13 @@
   <div class="character-container">
     <div class="character">
       <img v-if="image" :src="image" alt="Mario" class="plaatje" />
-      <img v-else src="@/assets/images/sad_emoticon.jpg" alt="Sad emoticon" class="plaatje" />
-      <div class="character-name"><h2>{{ character }}</h2></div>
+      <!-- <img v-else src="@/assets/images/sad_emoticon.jpg" alt="Sad emoticon" class="plaatje" /> -->
+      <div class="character-name">
+        <h2>{{ character.name }}</h2>
+      </div>
+      <!-- <div>
+        <h2> {{ disorder }}</h2>
+      </div> -->
     </div>
   </div>
 </template>
@@ -15,6 +20,7 @@ export default {
     backgroundcolor: String,
     character: String,
     image: String,
+    disorder: String
   },
 }
 </script>
@@ -54,7 +60,4 @@ export default {
   margin: 0 7.5px;
 
 }
-
-
-
 </style>

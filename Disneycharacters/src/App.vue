@@ -16,6 +16,7 @@ import MainCharacter from './components/MainCharacter.vue'
         <characterKart :character="character.name" :image="character.imageUrl" />
       </template>
     </div>
+
     <MainCharacter />
     <!-- <h3>highlight</h3>
     <characterKart
