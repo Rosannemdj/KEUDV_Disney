@@ -14,12 +14,13 @@ export default {
   },
   methods: {
     fetchCharacters() {
-      import('./assets/characters.json')
+      import('@/assets/characterdisorder.json')
         .then(data => {
           this.characters = data;
           this.filteredCharacters = this.characters; // Initieel worden alle karakters getoond
+          console.log("Characters loaded:", this.characters);
         })
-        .catch(error => console.error('Failed to load character data:', error));
+
     },
     filterCharacters() {
       if (this.searchQuery.trim() === '') {
