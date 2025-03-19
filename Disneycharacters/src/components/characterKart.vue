@@ -6,9 +6,9 @@
       <div class="character-name">
         <h2>{{ character.name }}</h2>
       </div>
-      <!-- <div>
-        <h2> {{ disorder }}</h2>
-      </div> -->
+      <div class="character-name">
+        <h4> {{ character.disorder }}</h4>
+      </div>
     </div>
   </div>
 </template>
@@ -27,37 +27,39 @@ export default {
 
 <style scoped>
 .plaatje {
-  width: 100px;
-  position: absolute;
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  position: center;
   border-radius: 10%;
 }
 
 
 .character-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 50px 15px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .character {
   /* Standaard achtergrondkleur, overschrijf dit per karakter */
   text-align: center;
-  height: 100px;
+  height: auto;
   width: 150px;
   border-radius: 10%;
-  padding-top: 80px;
   color: white;
   font-weight: bold;
   box-shadow:
     0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-  margin: 0 7.5px;
+  background-color: blue;
 
+}
+
+
+.character-name {
+  margin: 10px;
 }
 </style>

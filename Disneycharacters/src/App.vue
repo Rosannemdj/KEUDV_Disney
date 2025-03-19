@@ -1,6 +1,7 @@
 <script setup>
 import characterKart from './components/characterKart.vue'
 import MainCharacter from './components/MainCharacter.vue'
+import SearchBar from './components/SearchBar.vue';
 </script>
 
 <template>
@@ -10,7 +11,7 @@ import MainCharacter from './components/MainCharacter.vue'
   </header>
 
   <main>
-    <div id="container">
+    --<div id="container">
       <template v-for="character in characters" :key="character.character">
         {{ character.name }}
         <characterKart :character="character.name" :image="character.imageUrl" />
@@ -18,6 +19,8 @@ import MainCharacter from './components/MainCharacter.vue'
     </div>
 
     <MainCharacter />
+
+    <SearchBar />
     <!-- <h3>highlight</h3>
     <characterKart
       :backgroundcolor="characters[currentCharacter].backgroundcolor"
