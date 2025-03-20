@@ -10,6 +10,7 @@ import SearchBar from './components/SearchBar.vue';
     <h1>Disney characters</h1>
   </header>
 
+  <SearchBar />
   <main>
     --<div id="container">
       <template v-for="character in characters" :key="character.character">
@@ -20,7 +21,7 @@ import SearchBar from './components/SearchBar.vue';
 
     <MainCharacter />
 
-    <SearchBar />
+
     <!-- <h3>highlight</h3>
     <characterKart
       :backgroundcolor="characters[currentCharacter].backgroundcolor"
@@ -83,7 +84,7 @@ export default {
 }
 
 header {
-  display: inline-flex;
+  display: grid;
   grid-template-columns: 1fr 2fr;
   column-width: 800px;
   grid-gap: 20px;

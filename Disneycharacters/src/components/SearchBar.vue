@@ -1,5 +1,6 @@
 <script>
 import MainCharacter from './MainCharacter.vue';
+import characterDisorder from '@/assets/characterdisorder.json';
 
 export default {
   data() {
@@ -10,26 +11,32 @@ export default {
     };
   },
   mounted() {
-    this.fetchCharacters();  // Laad de karaktergegevens bij het laden van de component
+    this.loadCharacters();
+    console.log('mounted');
+    // Laad de karaktergegevens bij het laden van de component
   },
+
   methods: {
-    fetchCharacters() {
+    loadCharacters() {
       import('@/assets/characterdisorder.json')
-        .then(data => {
-          this.characters = data;
-          this.filteredCharacters = this.characters; // Initieel worden alle karakters getoond
-          console.log("Characters loaded:", this.characters);
+        .then((data) => {
+          this.characters = data.default; // Zorg ervoor dat je data.default gebruikt als dat nodig is
+          this.filteredCharacters = this.characters;
+          console.log("Characters loaded:", this.characters); // Log de geladen karakters
         })
 
     },
     filterCharacters() {
+      console.log("Current search query:", this.searchQuery);
+      console.log("Current characters:", this.characters);
       if (this.searchQuery.trim() === '') {
-        this.filteredCharacters = this.characters;
+        this.filteredCharacters = this.characters; //geen zoekopdracht, toon alle karakters
       } else {
         this.filteredCharacters = this.characters.filter(character =>
           character.disorder.toLowerCase().includes(this.searchQuery.toLowerCase())
         );
       }
+      console.log("Filtered characters:", this.filteredCharacters);
     }
   }
 }

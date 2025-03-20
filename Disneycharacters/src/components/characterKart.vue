@@ -37,7 +37,7 @@ export default {
 
 .character-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 50px 15px;
   flex-wrap: wrap;

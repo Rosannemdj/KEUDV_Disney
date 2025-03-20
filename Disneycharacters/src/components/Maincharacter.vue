@@ -8,14 +8,14 @@ import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
-  <div>
-    <ul v-if="dateLoaded">
-      <li v-for="character in mainCharacters" :key="character.id">
-        {{ console.log(character.name, character.imageUrl) }}
-        {{ character.name }} - {{ character.disorder || 'No disorder recorded' }} - {{ character.imageUrl }}
-        <character-kart :character="character" :image="character.imageUrl"></character-kart>
-      </li>
-    </ul>
+  <div v-if="dateLoaded" class="character-container">
+    <div v-for="character in mainCharacters" :key="character.id" class="character">
+
+      <!-- {{ console.log(character.name, character.imageUrl) }}
+        {{ character.name }} - {{ character.disorder || 'No disorder recorded' }} - {{ character.imageUrl }} -->
+      <character-kart :character="character" :image="character.imageUrl"></character-kart>
+
+    </div>
   </div>
 </template>
 
