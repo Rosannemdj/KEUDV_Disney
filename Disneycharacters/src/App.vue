@@ -10,7 +10,7 @@ import SearchBar from './components/SearchBar.vue';
     <h1>Disney characters</h1>
   </header>
 
-  <SearchBar />
+  <SearchBar id="zoekbalk" />
   <main>
     --<div id="container">
       <template v-for="character in characters" :key="character.character">
@@ -77,7 +77,7 @@ export default {
   grid-template-columns: repeat(8, 1fr);
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 15px;
   margin-top: 200px;
   margin-left: -300px;
@@ -100,5 +100,11 @@ header h1 {
   font-weight: bold;
   margin-top: 40px;
 
+
+}
+
+#zoekbalk {
+  margin-top: 200px;
+  justify-content: center;
 }
 </style>
