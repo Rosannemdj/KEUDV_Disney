@@ -1,27 +1,50 @@
+<script setup>
+import ColorThief from 'colorthief';
+</script>
 <template>
-  <div class="character-container">
-    <div class="character">
-      <img v-if="image" :src="image" alt="Mario" class="plaatje" />
-      <!-- <img v-else src="@/assets/images/sad_emoticon.jpg" alt="Sad emoticon" class="plaatje" /> -->
+
+    <div class="character" :style="{ backgroundColor: color }">
+      <img :src="image" alt="Mario" class="plaatje" :id="'p'+id" @load="dominantColor" crossOrigin="anonymous"/>
+  
       <div class="character-name">
-        <h2>{{ character.name }}</h2>
+        <h2>{{ character }}</h2>
       </div>
       <div class="character-name">
-        <h4> {{ character.disorder }}</h4>
+        <h4> {{ disorder }}</h4>
       </div>
     </div>
-  </div>
+  
 </template>
 
 <script>
 export default {
   name: 'characterKart',
   props: {
-    backgroundcolor: String,
     character: String,
     image: String,
-    disorder: String
+    disorder: String,
+    id : Number,
   },
+  data(){
+    return {
+      color: 'rgb(255,255,255)'
+    }
+  },
+  methods: {
+    dominantColor() {
+      const img = document.querySelector(`#p${this.id}`);
+
+      if(img == null){
+        this.color =  'rgb(255,255,255)'
+      }else{
+        const colorThief = new ColorThief();
+        const dominantColor = colorThief.getColor(img);
+        this.color = `rgb(${dominantColor[0]},${dominantColor[1]},${dominantColor[2]})`
+      }
+
+    }
+
+  }
 }
 </script>
 
@@ -32,29 +55,21 @@ export default {
   object-fit: cover;
   position: center;
   border-radius: 10%;
-}
 
-
-.character-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 15px;
-  flex-wrap: wrap;
 }
 
 .character {
   /* Standaard achtergrondkleur, overschrijf dit per karakter */
   text-align: center;
   height: auto;
-  width: 150px;
+  width: 180px;
+  height : 350px ; 
   border-radius: 10%;
   color: white;
   font-weight: bold;
   box-shadow:
     0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: blue;
 
 }
 

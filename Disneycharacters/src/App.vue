@@ -1,36 +1,14 @@
 <script setup>
-import characterKart from './components/characterKart.vue'
 import MainCharacter from './components/MainCharacter.vue'
-import SearchBar from './components/SearchBar.vue';
 </script>
 
 <template>
   <header>
-    <img src="./assets/images/logo.png" alt="Disney logo" />
-    <h1>Disney characters</h1>
+    <img src="./assets/images/logo.png" alt="Disney logo" id="logo" />
+    <h1>Disney characters </h1>
   </header>
 
-  <SearchBar id="zoekbalk" />
-  <main>
-    --<div id="container">
-      <template v-for="character in characters" :key="character.character">
-        {{ character.name }}
-        <characterKart :character="character.name" :image="character.imageUrl" />
-      </template>
-    </div>
-
-    <MainCharacter />
-
-
-    <!-- <h3>highlight</h3>
-    <characterKart
-      :backgroundcolor="characters[currentCharacter].backgroundcolor"
-      :character="characters[currentCharacter].character"
-      :image="characters[currentCharacter].image"
-    />
-   <button @click="previousCharacter()">Vorig</button>
-    <button @click="nextCharacter()">Volgende</button> -->
-  </main>
+  <MainCharacter />
 </template>
 
 <script>
@@ -40,18 +18,6 @@ export default {
       characters: [],
       currentCharacter: 0,
     }
-  },
-  onMounted() {
-    console.log('onMounted')
-  },
-  mounted() {
-    console.log("sdfjkldsjfkldsf");
-    fetch('https://api.disneyapi.dev/character?page=5&pageSize=50')
-      .then(response => response.json())
-      .then(resultFromApi => {
-        console.log(resultFromApi.data)
-        this.characters = resultFromApi.data
-      })
   },
   methods: {
     nextCharacter() {
@@ -99,8 +65,6 @@ header h1 {
   font-size: 20px;
   font-weight: bold;
   margin-top: 40px;
-
-
 }
 
 #zoekbalk {

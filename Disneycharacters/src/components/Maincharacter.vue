@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <!-- This component fetches the data from the Disney API and the characterdisorder.json file. It then displays the main
 characters with their respective disorders. If the character is not found in the API, it will display "No disorder
 recorded".-->
@@ -8,25 +9,29 @@ import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
+  <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Zoek op stoornis..."
+    @input="filterCharacters">
   <div v-if="dateLoaded" class="character-container">
-    <div v-for="character in mainCharacters" :key="character.id" class="character">
-
-      <!-- {{ console.log(character.name, character.imageUrl) }}
-        {{ character.name }} - {{ character.disorder || 'No disorder recorded' }} - {{ character.imageUrl }} -->
-      <character-kart :character="character" :image="character.imageUrl"></character-kart>
-
+    <div v-for="character in filteredCharacters" :key="character.id" class="character">
+      <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
+        :image="character.imageUrl"></character-kart>
     </div>
+
   </div>
+
+  <div v-else>
+    <img src="../assets/steamb-boat-mickei.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" />
+  </div>
+
 </template>
-
-
 <script>
 export default {
   data() {
     return {
       mainCharacters: {},
       filteredCharacters: [],
-      dateLoaded: false
+      dateLoaded: false,
+      searchQuery: ''
     };
 
   },
@@ -72,17 +77,31 @@ export default {
 
         }
       }
-
       this.mainCharacters = Object.values(this.mainCharacters).map(c => toRaw(c))
+      this.filteredCharacters = this.mainCharacters;
       console.log(this.mainCharacters)
       this.dateLoaded = true
     },
+    filterCharacters() {
+      if (this.searchQuery.trim() === '') {
+        this.filteredCharacters = this.mainCharacters; //geen zoekopdracht, toon alle karakters
+      } else {
+        this.filteredCharacters = this.mainCharacters.filter(character =>
+          character.disorder.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+      }
+      console.log("Filtered characters:", this.filteredCharacters);
+    }
 
-
-    //   console.log(filteredCharacters);
-    //   this.filteredCharacters.push(filteredCharacters);
-    //   console.log(this.filteredCharacters);
   }
 }
 
 </script>
+<style scoped>
+.character-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+</style>
