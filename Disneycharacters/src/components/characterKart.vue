@@ -3,17 +3,16 @@ import ColorThief from 'colorthief';
 </script>
 <template>
 
-    <div class="character" :style="{ backgroundColor: color }">
-      <img :src="image" alt="Mario" class="plaatje" :id="'p'+id" @load="dominantColor" crossOrigin="anonymous"/>
-  
-      <div class="character-name">
-        <h2>{{ character }}</h2>
-      </div>
-      <div class="character-name">
-        <h4> {{ disorder }}</h4>
-      </div>
+  <div class="character" :style="{ backgroundColor: color }">
+    <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
+    <div class="character-name">
+      <h2>{{ character }}</h2>
     </div>
-  
+    <div class="character-name">
+      <h4> {{ disorder }}</h4>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -23,9 +22,9 @@ export default {
     character: String,
     image: String,
     disorder: String,
-    id : Number,
+    id: Number,
   },
-  data(){
+  data() {
     return {
       color: 'rgb(255,255,255)'
     }
@@ -34,9 +33,9 @@ export default {
     dominantColor() {
       const img = document.querySelector(`#p${this.id}`);
 
-      if(img == null){
-        this.color =  'rgb(255,255,255)'
-      }else{
+      if (img == null) {
+        this.color = 'rgb(255,255,255)'
+      } else {
         const colorThief = new ColorThief();
         const dominantColor = colorThief.getColor(img);
         this.color = `rgb(${dominantColor[0]},${dominantColor[1]},${dominantColor[2]})`
@@ -50,20 +49,22 @@ export default {
 
 <style scoped>
 .plaatje {
-  width: 150px;
-  height: auto;
-  object-fit: cover;
+  width: 180px;
+  height: 200px;
+  object-fit: fill;
   position: center;
   border-radius: 10%;
 
 }
+
+
 
 .character {
   /* Standaard achtergrondkleur, overschrijf dit per karakter */
   text-align: center;
   height: auto;
   width: 180px;
-  height : 350px ; 
+  height: 350px;
   border-radius: 10%;
   color: white;
   font-weight: bold;

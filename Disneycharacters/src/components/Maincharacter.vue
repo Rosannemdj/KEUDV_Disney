@@ -9,8 +9,10 @@ import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
-  <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Zoek op stoornis..."
-    @input="filterCharacters">
+  <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Zoek op stoornis..." @input="filterCharacters"
+    id="zoekbalk">
+  <input v-if="dateLoaded" type="text" v-model="searchQuery2" placeholder="Zoek op karakter..."
+    @input="filterCharacters2" id="zoekbalk">
   <div v-if="dateLoaded" class="character-container">
     <div v-for="character in filteredCharacters" :key="character.id" class="character">
       <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
@@ -31,7 +33,8 @@ export default {
       mainCharacters: {},
       filteredCharacters: [],
       dateLoaded: false,
-      searchQuery: ''
+      searchQuery: '',
+      searchQuery2: ''
     };
 
   },
@@ -82,12 +85,23 @@ export default {
       console.log(this.mainCharacters)
       this.dateLoaded = true
     },
+    //dit is het stukje dat de input vergelijkt met de data van de api en de json file voor de stoornissen
     filterCharacters() {
       if (this.searchQuery.trim() === '') {
         this.filteredCharacters = this.mainCharacters; //geen zoekopdracht, toon alle karakters
       } else {
         this.filteredCharacters = this.mainCharacters.filter(character =>
           character.disorder.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+      }
+      console.log("Filtered characters:", this.filteredCharacters);
+    },
+    filterCharacters2() {
+      if (this.searchQuery2.trim() === '') {
+        this.filteredCharacters = this.mainCharacters; //geen zoekopdracht, toon alle karakters
+      } else {
+        this.filteredCharacters = this.mainCharacters.filter(character =>
+          character.name.toLowerCase().includes(this.searchQuery2.toLowerCase())
         );
       }
       console.log("Filtered characters:", this.filteredCharacters);
@@ -103,5 +117,15 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+}
+
+/* zorgt er voor dat de karakters netjes naar elkaar weergeven worden */
+
+#zoekbalk {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
 }
 </style>
