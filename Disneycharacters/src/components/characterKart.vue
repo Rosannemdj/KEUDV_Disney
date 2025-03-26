@@ -53,7 +53,8 @@ export default {
   height: 200px;
   object-fit: fill;
   position: center;
-  border-radius: 10%;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
 
 }
 

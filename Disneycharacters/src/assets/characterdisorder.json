@@ -36,12 +36,6 @@
     {"name": "Mirabel Madrigal", "disorder": "Impostor syndrome"},
     {"name": "Sadness", "disorder": "Depression"},
     {"name": "Wreck it raplh", "disorder": "Impulse control disorder"},
-    {"name": "Luca", "disorder": "Social phobia"},
     {"name": "Miquel rivera", "disorder": "Grief and depression"},
-    {"name": "Hades", "disorder": "Bipolar disorder"},
-    {"name": "Quassimodo", "disorder": "Social rejection and body dysmorphic disorder"},
-    {"name": "Woody Pride", "disorder": "Obsessive compulsive disorder"},
-    {"name": "Remy", "disorder": "Obsessive compulsive disorder"},
-    {"name": "Russel", "disorder": "ADHD"},
-    {"name": "Carl Fredricksen", "disorder": "Depression"}
+    {"name": "Hades", "disorder": "Bipolar disorder"}
   ]

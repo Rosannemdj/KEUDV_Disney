@@ -21,20 +21,21 @@ import CharacterKart from './characterKart.vue';
 
   </div>
 
-  <div v-else>
+  <div v-else class="loading">
     <img src="../assets/steamb-boat-mickei.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" />
   </div>
 
 </template>
 <script>
 export default {
+
   data() {
     return {
       mainCharacters: {},
       filteredCharacters: [],
       dateLoaded: false,
       searchQuery: '',
-      searchQuery2: ''
+      searchQuery2: '',
     };
 
   },
@@ -115,7 +116,7 @@ export default {
 .character-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 20px;
 }
 
@@ -124,8 +125,16 @@ export default {
 #zoekbalk {
   margin-top: 100px;
   margin-bottom: 100px;
-  justify-content: center;
   width: 200px;
   height: 50px;
+  margin-left: 10px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+
 }
 </style>
