@@ -3,23 +3,23 @@ import ColorThief from 'colorthief';
 </script>
 <template>
 
-  <div class="character character-front" :style="{ backgroundColor: color }" @click="flipCard">
-    <div class="character-card" :class="{ flipped: isFlipped }">
-      <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
-      <div class="character-name">
-        <h2>{{ character }}</h2>
+  
+    <div class="character character-card box" :class="{ flipped: isFlipped }" :style="{ backgroundColor: color }" @click="flipCard">
+      <div class="character-front front">
+        <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
+        <div class="character-name">
+          <h2>{{ character }}</h2>
+        </div>
+        <div class="character-name">
+          <h4> {{ disorder }}</h4>
+        </div>
       </div>
-      <div class="character-name">
-        <h4> {{ disorder }}</h4>
-      </div>
+      <div class="character character-back back" :style="{ backgroundColor: color }">
+      <h3>Meer Informatie</h3>
+      <p>Hier komt meer gedetailleerde informatie over het karakter.</p>
+
     </div>
-  </div>
-
-  <div class="character character-back" :style="{ backgroundColor: color }">
-    <h3>Meer Informatie</h3>
-    <p>Hier komt meer gedetailleerde informatie over het karakter.</p>
-
-  </div>
+    </div>
 
 </template>
 
@@ -60,6 +60,31 @@ export default {
 </script>
 
 <style scoped>
+
+  .front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    font-size: 20px;
+    color: white;
+    background-color: #3498db;
+    backface-visibility: hidden;
+  }
+
+  .back {
+    background-color: #e74c3c;
+    transform: rotateY(180deg);
+  }
+  
+  .box.flipped {
+    transform: rotateY(180deg);
+  }
+  
+
+
 .plaatje {
   width: 180px;
   height: 200px;
