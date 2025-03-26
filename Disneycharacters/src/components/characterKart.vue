@@ -3,23 +3,24 @@ import ColorThief from 'colorthief';
 </script>
 <template>
 
-  
-    <div class="character character-card box" :class="{ flipped: isFlipped }" :style="{ backgroundColor: color }" @click="flipCard">
-      <div class="character-front front">
-        <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
-        <div class="character-name">
-          <h2>{{ character }}</h2>
-        </div>
-        <div class="character-name">
-          <h4> {{ disorder }}</h4>
-        </div>
+
+  <div class="character character-card box" :class="{ flipped: isFlipped }" :style="{ backgroundColor: color }"
+    @click="flipCard">
+    <div class="character-front front">
+      <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
+      <div class="character-name">
+        <h3>{{ character }}</h3>
       </div>
-      <div class="character character-back back" :style="{ backgroundColor: color }">
+      <div class="character-name">
+        <h5> {{ disorder }}</h5>
+      </div>
+    </div>
+    <div class="character character-back back" :style="{ backgroundColor: color }">
       <h3>Meer Informatie</h3>
       <p>Hier komt meer gedetailleerde informatie over het karakter.</p>
 
     </div>
-    </div>
+  </div>
 
 </template>
 
@@ -60,29 +61,28 @@ export default {
 </script>
 
 <style scoped>
-
-  .front, .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* display: flex;
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* display: flex;
     justify-content: center;
     align-items: center; */
-    font-size: 20px;
-    color: white;
-    background-color: #3498db;
-    backface-visibility: hidden;
-  }
+  font-size: 20px;
+  color: white;
+  backface-visibility: hidden;
+}
 
-  .back {
-    background-color: #e74c3c;
-    transform: rotateY(180deg);
-  }
-  
-  .box.flipped {
-    transform: rotateY(180deg);
-  }
-  
+.back {
+  background-color: #e74c3c;
+  transform: rotateY(180deg);
+}
+
+.box.flipped {
+  transform: rotateY(180deg);
+}
+
 
 
 .plaatje {
@@ -110,9 +110,6 @@ export default {
 }
 
 
-.character-back {
-  /* transform: rotateY(180deg); */
-}
 
 .character-front {
   position: absolute;
@@ -136,10 +133,5 @@ export default {
     0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   perspective: 1000px;
-}
-
-
-.character-name {
-  margin: 10px;
 }
 </style>
