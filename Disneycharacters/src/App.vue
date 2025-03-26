@@ -3,24 +3,40 @@ import MainCharacter from './components/MainCharacter.vue'
 </script>
 
 <template>
-  <header>
-    <img src="./assets/images/logo.png" alt="Disney logo" id="logo" />
-    <h1>Disney characters </h1>
-  </header>
+  <nav>
+    <ul>
+      <li>
+        <img src="./assets/images/logo.png" alt="Disney logo" id="logo" />
+      </li>
+      <li>
+        <h1>Disney characters </h1>
+      </li>
+    </ul>
+
+  </nav>
 
   <MainCharacter />
 </template>
 
 
 <style scoped>
-header img {
+nav img {
   width: 150px;
   height: 100px;
 }
 
-header h1 {
+nav h1 {
   font-size: 20px;
   font-weight: bold;
   margin-top: 40px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  float: left;
+  margin-right: 10px;
 }
 </style>

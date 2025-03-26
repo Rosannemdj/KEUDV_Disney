@@ -123,7 +123,7 @@ export default {
 /* zorgt er voor dat de karakters netjes naar elkaar weergeven worden */
 
 #zoekbalk {
-  margin-top: 100px;
+  margin-top: 200px;
   margin-bottom: 100px;
   width: 200px;
   height: 50px;

@@ -3,14 +3,22 @@ import ColorThief from 'colorthief';
 </script>
 <template>
 
-  <div class="character" :style="{ backgroundColor: color }">
-    <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
-    <div class="character-name">
-      <h2>{{ character }}</h2>
+  <div class="character character-front" :style="{ backgroundColor: color }" @click="flipCard">
+    <div class="character-card" :class="{ flipped: isFlipped }">
+      <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
+      <div class="character-name">
+        <h2>{{ character }}</h2>
+      </div>
+      <div class="character-name">
+        <h4> {{ disorder }}</h4>
+      </div>
     </div>
-    <div class="character-name">
-      <h4> {{ disorder }}</h4>
-    </div>
+  </div>
+
+  <div class="character character-back" :style="{ backgroundColor: color }">
+    <h3>Meer Informatie</h3>
+    <p>Hier komt meer gedetailleerde informatie over het karakter.</p>
+
   </div>
 
 </template>
@@ -26,7 +34,8 @@ export default {
   },
   data() {
     return {
-      color: 'rgb(255,255,255)'
+      color: 'rgb(255,255,255)',
+      isFlipped: false
     }
   },
   methods: {
@@ -41,8 +50,11 @@ export default {
         this.color = `rgb(${dominantColor[0]},${dominantColor[1]},${dominantColor[2]})`
       }
 
-    }
+    },
+    flipCard() {
+      this.isFlipped = !this.isFlipped;
 
+    }
   }
 }
 </script>
@@ -55,9 +67,35 @@ export default {
   position: center;
   border-top-left-radius: 10%;
   border-top-right-radius: 10%;
-
 }
 
+.character-card {
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.character-front,
+.character-back {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  backface-visibility: hidden;
+  /* Verbergt de achterkant van de kaart wanneer deze niet naar de gebruiker is gericht */
+}
+
+
+.character-back {
+  /* transform: rotateY(180deg); */
+}
+
+.character-front {
+  position: absolute;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
 
 
 .character {
@@ -72,7 +110,7 @@ export default {
   box-shadow:
     0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+  perspective: 1000px;
 }
 
 
