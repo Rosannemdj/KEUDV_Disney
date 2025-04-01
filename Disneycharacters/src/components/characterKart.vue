@@ -6,7 +6,7 @@ import ColorThief from 'colorthief';
 
   <div class="character character-card box" :class="{ flipped: isFlipped }" :style="{ backgroundColor: color }"
     @click="flipCard">
-    <div class="character-front front">
+    <div class="front">
       <img :src="image" alt="" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
       <div class="character-name">
         <h3>{{ character }}</h3>
@@ -15,7 +15,7 @@ import ColorThief from 'colorthief';
         <h5> {{ disorder }}</h5>
       </div>
     </div>
-    <div class="character character-back back" :style="{ backgroundColor: color }">
+    <div class="character back" :style="{ backgroundColor: color }">
       <h3>Meer Informatie</h3>
       <p>Hier komt meer gedetailleerde informatie over het karakter.</p>
 
@@ -88,9 +88,6 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* display: flex;
-    justify-content: center;
-    align-items: center; */
   font-size: 20px;
   color: white;
   backface-visibility: hidden;
@@ -104,7 +101,6 @@ export default {
 .box.flipped {
   transform: rotateY(180deg);
 }
-
 
 
 .plaatje {
@@ -122,20 +118,6 @@ export default {
   transform-style: preserve-3d;
 }
 
-.character-front,
-.character-back {
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  backface-visibility: hidden;
-  /* Verbergt de achterkant van de kaart wanneer deze niet naar de gebruiker is gericht */
-}
-
-
-
-.character-front {
-  position: absolute;
-}
 
 .flipped {
   transform: rotateY(180deg);
@@ -143,7 +125,6 @@ export default {
 
 
 .character {
-  /* Standaard achtergrondkleur, overschrijf dit per karakter */
   text-align: center;
   height: auto;
   width: 180px;
@@ -155,5 +136,16 @@ export default {
     0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   perspective: 1000px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.character:hover {
+  transform: translateY(-5px) scale(1.02);
+  /* <– tilt omhoog + iets groter */
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.2);
+  /* <– extra schaduw voor diepte */
 }
 </style>
