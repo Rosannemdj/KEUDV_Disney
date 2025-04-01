@@ -1,7 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
-<!-- This component fetches the data from the Disney API and the characterdisorder.json file. It then displays the main
-characters with their respective disorders. If the character is not found in the API, it will display "No disorder
-recorded".-->
 <script setup>
 import characterDisorders from '../assets/characterdisorder.json';
 import { toRaw } from 'vue';
@@ -9,10 +5,14 @@ import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
-  <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Search by disorder..."
-    @input="filterCharacters" class="zoekbalk">
-  <input v-if="dateLoaded" type="text" v-model="searchQuery2" placeholder="Search by character..."
-    @input="filterCharacters2" class="zoekbalk">
+  <div class="zoekbalk-container" v-if="dateLoaded">
+    <input type="text" v-model="searchQuery" placeholder="Search by disorder..." @input="filterCharacters"
+      class="zoekbalk" />
+
+    <input type="text" v-model="searchQuery2" placeholder="Search by character..." @input="filterCharacters2"
+      class="zoekbalk" />
+  </div>
+
   <div v-if="dateLoaded" class="character-container">
     <div v-for="character in filteredCharacters" :key="character.id" class="character">
       <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
@@ -117,27 +117,36 @@ export default {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
-  gap: 20px;
+  gap: 25px;
 }
 
 /* zorgt er voor dat de karakters netjes naar elkaar weergeven worden */
 
+.zoekbalk-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+}
+
 .zoekbalk {
-  margin-top: 200px;
-  margin-bottom: 100px;
   width: 200px;
   height: 50px;
-  margin-left: 20px;
   border-radius: 10px;
   text-align: center;
   color: #1E3A8A;
   transition: all 0.3s ease;
+  margin: 100px 0 100px 20px;
 }
 
-.zoekbalk:hover {
+.zoekbalk:hover,
+.zoekbalk:focus {
   border-color: #1E3A8A;
   box-shadow: 0 0 10px #1E3A8A;
   transform: scale(1.03);
+  outline: none;
 }
 
 .zoekbalk::placeholder {
@@ -147,13 +156,6 @@ export default {
 
 .zoekbalk:hover::placeholder {
   color: #1E3A8A;
-}
-
-.zoekbalk:focus {
-  border-color: #1E3A8A;
-  /* Zelfde donkerblauw */
-  box-shadow: 0 0 10px #1E3A8A;
-  outline: none;
 }
 
 .loading {

@@ -4,8 +4,7 @@ import ColorThief from 'colorthief';
 <template>
 
 
-  <div class=" character character-card box" :class="{ flipped: isFlipped }" @click="flipCard"
-    :style="{ backgroundColor: color }">
+  <div class=" character character-card box" :class="{ flipped: isFlipped }" @click="flipCard">
     <div class="front" :style="{ backgroundColor: color }">
       <img :src="image" alt="" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
       <div class="character-name">
@@ -88,9 +87,30 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-size: 20px;
   color: white;
   backface-visibility: hidden;
+}
+
+.character-name {
+  padding: 6px 6px;
+  text-align: center;
+}
+
+.character-name h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.character-name h5 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.character-name h3,
+.character-name h5 {
+  margin: 4px 0;
+  color: white;
 }
 
 .back {
@@ -103,24 +123,26 @@ export default {
 
 .front {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 10%;
+  border-radius: 12px;
 }
 
 .front:hover {
   transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 12px 24px rgba(30, 58, 138, 0.25);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px #1E3A8A;
   cursor: pointer;
 }
 
 
 .plaatje {
-  width: 180px;
+  width: 100%;
   height: 200px;
   object-fit: fill;
-  position: center;
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
+  /* position: center; */
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
+
 
 .character-card {
   position: relative;

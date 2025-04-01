@@ -3,40 +3,48 @@ import MainCharacter from './components/MainCharacter.vue'
 </script>
 
 <template>
-  <nav>
-    <ul>
-      <li>
-        <img src="./assets/images/logo.png" alt="Disney logo" id="logo" />
-      </li>
-      <li>
-        <h1>Disney characters </h1>
-      </li>
-    </ul>
-
-  </nav>
+  <header>
+    <div class="site-header">
+      <img src="./assets/images/logo.png" alt="Disney logo" id="logo" />
+      <h1>Disney Characters</h1>
+      <p class="header-subtitle">
+        Discover the hidden layers of your favorite characters
+      </p>
+    </div>
+  </header>
 
   <MainCharacter />
 </template>
 
 
 <style scoped>
-nav img {
-  width: 150px;
-  height: 100px;
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 0px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
-nav h1 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 40px;
+
+#logo {
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
-ul {
-  list-style-type: none;
+.site-header h1 {
+  font-size: 2rem;
+  color: #1E3A8A;
+  margin-bottom: 10px;
 }
 
-li {
-  float: left;
-  margin-right: 10px;
+.header-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #1E3A8A;
+  max-width: 600px;
+  line-height: 1.5;
 }
 </style>
