@@ -8,8 +8,7 @@ import MainCharacter from './components/MainCharacter.vue'
       <img src="./assets/images/logo.png" alt="Disney logo" id="logo" />
       <h1>Disney Characters</h1>
       <p class="header-subtitle">
-        Discover the hidden layers of your favorite characters
-      </p>
+        Discover the hidden layers of your favorite characters</p>
     </div>
   </header>
 

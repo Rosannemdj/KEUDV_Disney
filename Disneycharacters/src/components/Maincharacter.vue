@@ -8,7 +8,6 @@ import CharacterKart from './characterKart.vue';
   <div class="zoekbalk-container" v-if="dateLoaded">
     <input type="text" v-model="searchQuery" placeholder="Search by disorder..." @input="filterCharacters"
       class="zoekbalk" />
-
     <input type="text" v-model="searchQuery2" placeholder="Search by character..." @input="filterCharacters2"
       class="zoekbalk" />
   </div>
@@ -18,13 +17,17 @@ import CharacterKart from './characterKart.vue';
       <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
         :image="character.imageUrl"></character-kart>
     </div>
+  </div>
 
+  <div v-if="dateLoaded && filteredCharacters.length === 0" class="no-results">
+    <img src="../assets/images/mickeymouse.png" alt="" class="no-results-img" />
+    <p>Gosh! Mickey couldn’t find any characters that match your search!</p>
   </div>
 
   <div v-else class="loading">
     <img src="../assets/steamb-boat-mickei.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" />
+    <p class="loading-text">Mickey’s navigating the steamboat of info your way — the data boat is almost docked!</p>
   </div>
-
 </template>
 <script>
 export default {
@@ -113,10 +116,18 @@ export default {
 
 </script>
 <style scoped>
+.no-results {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #1E3A8A;
+  font-size: 1rem;
+  margin-top: 40px;
+}
+
 .character-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
+  justify-content: center;
   gap: 25px;
 }
 
@@ -138,7 +149,7 @@ export default {
   text-align: center;
   color: #1E3A8A;
   transition: all 0.3s ease;
-  margin: 100px 0 100px 20px;
+  margin: 100px 0 50px 20px;
 }
 
 .zoekbalk:hover,
@@ -159,10 +170,35 @@ export default {
 }
 
 .loading {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  text-align: center;
+  position: relative;
+  margin-top: 80px;
+}
 
+.loading-img {
+  width: 120px;
+  height: auto;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #1E3A8A;
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.no-results-img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 12px;
 }
 </style>
