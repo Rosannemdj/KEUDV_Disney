@@ -4,9 +4,9 @@ import ColorThief from 'colorthief';
 <template>
 
 
-  <div class="character character-card box" :class="{ flipped: isFlipped }" :style="{ backgroundColor: color }"
-    @click="flipCard">
-    <div class="front">
+  <div class=" character character-card box" :class="{ flipped: isFlipped }" @click="flipCard"
+    :style="{ backgroundColor: color }">
+    <div class="front" :style="{ backgroundColor: color }">
       <img :src="image" alt="" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
       <div class="character-name">
         <h3>{{ character }}</h3>
@@ -94,12 +94,22 @@ export default {
 }
 
 .back {
-  background-color: #e74c3c;
   transform: rotateY(180deg);
 }
 
 .box.flipped {
   transform: rotateY(180deg);
+}
+
+.front {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10%;
+}
+
+.front:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(30, 58, 138, 0.25);
+  cursor: pointer;
 }
 
 
@@ -138,14 +148,5 @@ export default {
   perspective: 1000px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-}
-
-.character:hover {
-  transform: translateY(-5px) scale(1.02);
-  /* <– tilt omhoog + iets groter */
-  box-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.25),
-    0 10px 30px rgba(0, 0, 0, 0.2);
-  /* <– extra schaduw voor diepte */
 }
 </style>
