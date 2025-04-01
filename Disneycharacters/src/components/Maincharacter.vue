@@ -10,9 +10,9 @@ import CharacterKart from './characterKart.vue';
 
 <template>
   <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Search by disorder..."
-    @input="filterCharacters" id="zoekbalk">
+    @input="filterCharacters" class="zoekbalk">
   <input v-if="dateLoaded" type="text" v-model="searchQuery2" placeholder="Search by character..."
-    @input="filterCharacters2" id="zoekbalk">
+    @input="filterCharacters2" class="zoekbalk">
   <div v-if="dateLoaded" class="character-container">
     <div v-for="character in filteredCharacters" :key="character.id" class="character">
       <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
@@ -122,12 +122,38 @@ export default {
 
 /* zorgt er voor dat de karakters netjes naar elkaar weergeven worden */
 
-#zoekbalk {
+.zoekbalk {
   margin-top: 200px;
   margin-bottom: 100px;
   width: 200px;
   height: 50px;
-  margin-left: 10px;
+  margin-left: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #1E3A8A;
+  transition: all 0.3s ease;
+}
+
+.zoekbalk:hover {
+  border-color: #1E3A8A;
+  box-shadow: 0 0 10px #1E3A8A;
+  transform: scale(1.03);
+}
+
+.zoekbalk::placeholder {
+  color: #94A3B8;
+  transition: color 0.3s ease;
+}
+
+.zoekbalk:hover::placeholder {
+  color: #1E3A8A;
+}
+
+.zoekbalk:focus {
+  border-color: #1E3A8A;
+  /* Zelfde donkerblauw */
+  box-shadow: 0 0 10px #1E3A8A;
+  outline: none;
 }
 
 .loading {
