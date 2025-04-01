@@ -7,7 +7,7 @@ import ColorThief from 'colorthief';
   <div class="character character-card box" :class="{ flipped: isFlipped }" :style="{ backgroundColor: color }"
     @click="flipCard">
     <div class="character-front front">
-      <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
+      <img :src="image" alt="" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
       <div class="character-name">
         <h3>{{ character }}</h3>
       </div>
@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       color: 'rgb(255,255,255)',
-      isFlipped: false
+      isFlipped: false,
     }
   },
   methods: {
@@ -54,7 +54,6 @@ export default {
     },
     flipCard() {
       this.isFlipped = !this.isFlipped;
-
     }
   }
 }
