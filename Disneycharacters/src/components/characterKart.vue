@@ -16,7 +16,7 @@ import ColorThief from 'colorthief';
     </div>
     <div class="character back" :style="{ backgroundColor: color }">
       <h3>Meer Informatie</h3>
-      <p>Hier komt meer gedetailleerde informatie over het karakter.</p>
+      <p class="disorder-explanation">{{ explanation }}</p>
 
     </div>
   </div>
@@ -31,6 +31,7 @@ export default {
     image: String,
     disorder: String,
     id: Number,
+    explanation: String,
   },
   data() {
     return {
@@ -117,8 +118,10 @@ export default {
   transform: rotateY(180deg);
 }
 
+
 .box.flipped {
   transform: rotateY(180deg);
+
 }
 
 .front {
@@ -146,7 +149,7 @@ export default {
 
 .character-card {
   position: relative;
-  transition: transform 0.8s;
+  /* transition: transform 1.5s; */
   transform-style: preserve-3d;
 }
 

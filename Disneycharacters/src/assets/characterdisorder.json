@@ -1,10 +1,11 @@
 [
-    { "name": "Rapunzel", "disorder": "Post-Traumatic Stress Disorder"},
-    { "name": "Donald Duck", "disorder": "Intermittent Explosive Disorder"},
-    { "name": "Dumbo", "disorder": "Social anxiety disorder" },
-    { "name": "Simba", "disorder": "Post-Traumatic Stress Disorder" },
-    {"name": "Winnie the Pooh", "disorder": "eating disorder & impulse control issues"},
-    {"name": "Piglet", "disorder": "Anxiety disorder"},
+    { "name": "Rapunzel", "disorder": "Post-Traumatic Stress Disorder", "explanation": 
+    "After being isolated in a tower for most of her life, she shows signs of PTSD through her confusion, fear, and emotional swings when faced with the outside world."},
+    { "name": "Donald Duck", "disorder": "Intermittent Explosive Disorder" , "explanation":"Donald’s frequent and uncontrollable outbursts reflect classic signs of Intermittent Explosive Disorder."},
+    { "name": "Dumbo", "disorder": "Social anxiety disorder", "explanation":"Dumbo avoids social interaction and feels intense fear of being judged due to his ears, showing signs of social anxiety." },
+    { "name": "Simba", "disorder": "Post-Traumatic Stress Disorder" , "explanation": "Simba exhibits PTSD after witnessing Mufasa’s death and experiencing guilt, nightmares, and avoidance."},
+    {"name": "Winnie the Pooh", "disorder": "eating disorder & impulse control issues", "explanation": "Pooh's constant eating and difficulty resisting honey can reflect disordered eating and poor impulse control."},
+    {"name": "Piglet", "disorder": "Anxiety disorder", "explanation": "Piglet is nervous, overthinks situations, and often fears the worst—typical behaviors of an anxiety disorder."},
     {"name": "Tigger", "disorder": "Attention Deficit/Hyperactivity Disorder"},
     {"name": "Anna", "disorder": "Attention Deficit/Hyperactivity Disorder"},
     {"name": "Elsa", "disorder": "Major depressive disorder"},

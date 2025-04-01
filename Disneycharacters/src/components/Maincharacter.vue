@@ -20,7 +20,10 @@ import CharacterKart from './characterKart.vue';
   <div v-if="dateLoaded" class="character-container">
     <div v-for="character in filteredCharacters" :key="character.id" class="character">
       <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
-        :image="character.imageUrl"></character-kart>
+        :image="character.imageUrl" :explanation="character.explanation"></character-kart>
+    </div>
+    <div>
+
     </div>
   </div>
 
@@ -54,7 +57,6 @@ export default {
     async fetchdisorder() {
       for (var j of characterDisorders) {
         const c_name = j.name;
-
         if (c_name != undefined) {
 
           const url = `https://api.disneyapi.dev/character?name=${c_name}`;
