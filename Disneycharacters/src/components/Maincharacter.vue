@@ -12,6 +12,11 @@ import CharacterKart from './characterKart.vue';
       class="zoekbalk" />
   </div>
 
+  <div v-if="dateLoaded && filteredCharacters.length === 0" class="no-results">
+    <img src="../assets/images/mickeymouse.png" alt="" class="no-results-img" />
+    <p>Gosh! Mickey couldn’t find any characters that match your search!</p>
+  </div>
+
   <div v-if="dateLoaded" class="character-container">
     <div v-for="character in filteredCharacters" :key="character.id" class="character">
       <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
@@ -19,10 +24,7 @@ import CharacterKart from './characterKart.vue';
     </div>
   </div>
 
-  <div v-if="dateLoaded && filteredCharacters.length === 0" class="no-results">
-    <img src="../assets/images/mickeymouse.png" alt="" class="no-results-img" />
-    <p>Gosh! Mickey couldn’t find any characters that match your search!</p>
-  </div>
+
 
   <div v-else class="loading">
     <img src="../assets/steamb-boat-mickei.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" />
