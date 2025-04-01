@@ -9,9 +9,9 @@ import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
-  <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Zoek op stoornis..." @input="filterCharacters"
-    id="zoekbalk">
-  <input v-if="dateLoaded" type="text" v-model="searchQuery2" placeholder="Zoek op karakter..."
+  <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Search by disorder..."
+    @input="filterCharacters" id="zoekbalk">
+  <input v-if="dateLoaded" type="text" v-model="searchQuery2" placeholder="Search by character..."
     @input="filterCharacters2" id="zoekbalk">
   <div v-if="dateLoaded" class="character-container">
     <div v-for="character in filteredCharacters" :key="character.id" class="character">
