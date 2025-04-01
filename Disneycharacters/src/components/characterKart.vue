@@ -53,9 +53,32 @@ export default {
 
     },
     flipCard() {
-      this.isFlipped = !this.isFlipped;
-    }
-  }
+      if (this.isFlipped) {
+        // Als de kaart al flipped is, sluit hem dan
+        this.isFlipped = false;
+      } else {
+        // Eerst andere kaarten resetten
+        window.dispatchEvent(new CustomEvent("resetFlip", { detail: this.id }));
+
+        // Dan deze kaart flipped maken
+        this.isFlipped = true;
+      }
+    },
+    resetFlipped(event) {
+      // Alleen resetten als de geklikte kaart NIET deze is
+      if (event.detail !== this.id) {
+        this.isFlipped = false;
+      }
+    },
+  },
+  mounted() {
+    // Luisteren naar het globale reset-event
+    window.addEventListener("resetFlip", this.resetFlipped);
+  },
+  beforeUnmount() {
+    // Event listener opruimen als component verdwijnt
+    window.removeEventListener("resetFlip", this.resetFlipped);
+  },
 }
 </script>
 
