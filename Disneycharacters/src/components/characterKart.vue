@@ -4,10 +4,9 @@ import ColorThief from 'colorthief';
 <template>
 
 
-  <div class="character character-card box" :class="{ flipped: isFlipped }" :style="{ backgroundColor: color }"
-    @click="flipCard">
-    <div class="character-front front">
-      <img :src="image" alt="Mario" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
+  <div class=" character character-card box" :class="{ flipped: isFlipped }" @click="flipCard">
+    <div class="front" :style="{ backgroundColor: color }">
+      <img :src="image" alt="" class="plaatje" :id="'p' + id" @load="dominantColor" crossOrigin="anonymous" />
       <div class="character-name">
         <h3>{{ character }}</h3>
       </div>
@@ -15,9 +14,9 @@ import ColorThief from 'colorthief';
         <h5> {{ disorder }}</h5>
       </div>
     </div>
-    <div class="character character-back back" :style="{ backgroundColor: color }">
+    <div class="character back" :style="{ backgroundColor: color }">
       <h3>Meer Informatie</h3>
-      <p>Hier komt meer gedetailleerde informatie over het karakter.</p>
+      <p class="disorder-explanation">{{ explanation }}</p>
 
     </div>
   </div>
@@ -32,11 +31,12 @@ export default {
     image: String,
     disorder: String,
     id: Number,
+    explanation: String,
   },
   data() {
     return {
       color: 'rgb(255,255,255)',
-      isFlipped: false
+      isFlipped: false,
     }
   },
   methods: {
@@ -53,10 +53,32 @@ export default {
 
     },
     flipCard() {
-      this.isFlipped = !this.isFlipped;
+      if (this.isFlipped) {
+        // Als de kaart al flipped is, sluit hem dan
+        this.isFlipped = false;
+      } else {
+        // Eerst andere kaarten resetten
+        window.dispatchEvent(new CustomEvent("resetFlip", { detail: this.id }));
 
-    }
-  }
+        // Dan deze kaart flipped maken
+        this.isFlipped = true;
+      }
+    },
+    resetFlipped(event) {
+      // Alleen resetten als de geklikte kaart NIET deze is
+      if (event.detail !== this.id) {
+        this.isFlipped = false;
+      }
+    },
+  },
+  mounted() {
+    // Luisteren naar het globale reset-event
+    window.addEventListener("resetFlip", this.resetFlipped);
+  },
+  beforeUnmount() {
+    // Event listener opruimen als component verdwijnt
+    window.removeEventListener("resetFlip", this.resetFlipped);
+  },
 }
 </script>
 
@@ -66,54 +88,71 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* display: flex;
-    justify-content: center;
-    align-items: center; */
-  font-size: 20px;
   color: white;
   backface-visibility: hidden;
 }
 
+.character-name {
+  padding: 6px 6px;
+  text-align: center;
+}
+
+.character-name h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.character-name h5 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.character-name h3,
+.character-name h5 {
+  margin: 4px 0;
+  color: white;
+}
+
 .back {
-  background-color: #e74c3c;
   transform: rotateY(180deg);
 }
+
 
 .box.flipped {
   transform: rotateY(180deg);
+
 }
 
+.front {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.front:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px #1E3A8A;
+  cursor: pointer;
+}
 
 
 .plaatje {
-  width: 180px;
+  width: 100%;
   height: 200px;
   object-fit: fill;
-  position: center;
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
+  /* position: center; */
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
+
 
 .character-card {
   position: relative;
-  transition: transform 0.8s;
+  /* transition: transform 1.5s; */
   transform-style: preserve-3d;
 }
 
-.character-front,
-.character-back {
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  backface-visibility: hidden;
-  /* Verbergt de achterkant van de kaart wanneer deze niet naar de gebruiker is gericht */
-}
-
-
-
-.character-front {
-  position: absolute;
-}
 
 .flipped {
   transform: rotateY(180deg);
@@ -121,7 +160,6 @@ export default {
 
 
 .character {
-  /* Standaard achtergrondkleur, overschrijf dit per karakter */
   text-align: center;
   height: auto;
   width: 180px;
@@ -133,5 +171,7 @@ export default {
     0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   perspective: 1000px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 </style>

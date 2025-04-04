@@ -1,7 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
-<!-- This component fetches the data from the Disney API and the characterdisorder.json file. It then displays the main
-characters with their respective disorders. If the character is not found in the API, it will display "No disorder
-recorded".-->
 <script setup>
 import characterDisorders from '../assets/characterdisorder.json';
 import { toRaw } from 'vue';
@@ -9,22 +5,34 @@ import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
-  <input v-if="dateLoaded" type="text" v-model="searchQuery" placeholder="Zoek op stoornis..." @input="filterCharacters"
-    id="zoekbalk">
-  <input v-if="dateLoaded" type="text" v-model="searchQuery2" placeholder="Zoek op karakter..."
-    @input="filterCharacters2" id="zoekbalk">
+  <div class="zoekbalk-container" v-if="dateLoaded">
+    <input type="text" v-model="searchQuery" placeholder="Search by disorder..." @input="filterCharacters"
+      class="zoekbalk" />
+    <input type="text" v-model="searchQuery2" placeholder="Search by character..." @input="filterCharacters2"
+      class="zoekbalk" />
+  </div>
+
+  <div v-if="dateLoaded && filteredCharacters.length === 0" class="no-results">
+    <img src="../assets/images/mickeymouse.png" alt="" class="no-results-img" />
+    <p>Gosh! Mickey couldn’t find any characters that match your search!</p>
+  </div>
+
   <div v-if="dateLoaded" class="character-container">
     <div v-for="character in filteredCharacters" :key="character.id" class="character">
       <character-kart :character="character.name" :id="character._id" :disorder="character.disorder"
-        :image="character.imageUrl"></character-kart>
+        :image="character.imageUrl" :explanation="character.explanation"></character-kart>
     </div>
+    <div>
 
+    </div>
   </div>
+
+
 
   <div v-else class="loading">
     <img src="../assets/steamb-boat-mickei.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" />
+    <p class="loading-text">Mickey’s navigating the steamboat of info your way — the data boat is almost docked!</p>
   </div>
-
 </template>
 <script>
 export default {
@@ -49,7 +57,6 @@ export default {
     async fetchdisorder() {
       for (var j of characterDisorders) {
         const c_name = j.name;
-
         if (c_name != undefined) {
 
           const url = `https://api.disneyapi.dev/character?name=${c_name}`;
@@ -113,28 +120,89 @@ export default {
 
 </script>
 <style scoped>
+.no-results {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #1E3A8A;
+  font-size: 1rem;
+  margin-top: 40px;
+}
+
 .character-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
-  gap: 20px;
+  justify-content: center;
+  gap: 25px;
 }
 
 /* zorgt er voor dat de karakters netjes naar elkaar weergeven worden */
 
-#zoekbalk {
-  margin-top: 200px;
-  margin-bottom: 100px;
+.zoekbalk-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.zoekbalk {
   width: 200px;
   height: 50px;
-  margin-left: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: #1E3A8A;
+  transition: all 0.3s ease;
+  margin: 100px 0 50px 20px;
+}
+
+.zoekbalk:hover,
+.zoekbalk:focus {
+  border-color: #1E3A8A;
+  box-shadow: 0 0 10px #1E3A8A;
+  transform: scale(1.03);
+  outline: none;
+}
+
+.zoekbalk::placeholder {
+  color: #94A3B8;
+  transition: color 0.3s ease;
+}
+
+.zoekbalk:hover::placeholder {
+  color: #1E3A8A;
 }
 
 .loading {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  text-align: center;
+  position: relative;
+  margin-top: 80px;
+}
 
+.loading-img {
+  width: 120px;
+  height: auto;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #1E3A8A;
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.no-results-img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 12px;
 }
 </style>

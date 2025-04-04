@@ -36,6 +36,7 @@
   --section-gap: 160px;
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
@@ -48,7 +49,7 @@
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
   }
-}
+} */
 
 *,
 *::before,
@@ -83,4 +84,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to bottom right, #a2c0f5, #f9f6ff);
+  min-height: 100vh;
+  margin: 0;
 }
