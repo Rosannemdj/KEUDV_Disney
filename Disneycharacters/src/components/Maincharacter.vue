@@ -55,6 +55,10 @@ export default {
   methods: {
 
     async fetchdisorder() {
+      const explanationMap = {};
+      characterDisorders.forEach(c => {
+        explanationMap[c.name] = c.explanation;
+      });
       for (var j of characterDisorders) {
         const c_name = j.name;
         if (c_name != undefined) {
@@ -70,14 +74,16 @@ export default {
               if (filteredResults.length > 1) {
                 const mostFilmsCharacter = filteredResults.reduce((prev, current) => (prev.films.length > current.films.length) ? prev : current);
                 //console.log(c_name, "found most films character ", mostFilmsCharacter)
-
+                console.log(mostFilmsCharacter.films?.[0])
                 this.mainCharacters[c_name] = mostFilmsCharacter;
                 this.mainCharacters[c_name].disorder = j.disorder;
+                this.mainCharacters[c_name].explanation = explanationMap[c_name] || "No explanation available.";
 
               } else if ((filteredResults.length == 1) || (Object.keys(filteredResults).length > 0)) {
                 //console.log(c_name, "found has only 1 list of character ", filteredResults)
                 this.mainCharacters[c_name] = filteredResults;
                 this.mainCharacters[c_name].disorder = j.disorder;
+                this.mainCharacters[c_name].explanation = explanationMap[c_name] || "No explanation available.";
               } else {
 
                 console.log(c_name, "found has no results : ", filteredResults)

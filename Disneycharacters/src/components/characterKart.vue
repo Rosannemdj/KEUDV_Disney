@@ -15,7 +15,7 @@ import ColorThief from 'colorthief';
       </div>
     </div>
     <div class="character back" :style="{ backgroundColor: color }">
-      <h3>Meer Informatie</h3>
+      <h3>Explanation</h3>
       <p class="disorder-explanation">{{ explanation }}</p>
 
     </div>
@@ -173,5 +173,14 @@ export default {
   perspective: 1000px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+}
+
+.disorder-explanation {
+  margin: 10px;
+}
+
+.back h3 {
+  margin: 10px;
+  font-weight: bold;
 }
 </style>
