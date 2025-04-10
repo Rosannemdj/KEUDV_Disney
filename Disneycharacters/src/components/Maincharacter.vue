@@ -78,12 +78,14 @@ export default {
                 this.mainCharacters[c_name] = mostFilmsCharacter;
                 this.mainCharacters[c_name].disorder = j.disorder;
                 this.mainCharacters[c_name].explanation = explanationMap[c_name] || "No explanation available.";
+                this.mainCharacters[c_name].abbreviation = j.abbreviation || '';
 
               } else if ((filteredResults.length == 1) || (Object.keys(filteredResults).length > 0)) {
                 //console.log(c_name, "found has only 1 list of character ", filteredResults)
                 this.mainCharacters[c_name] = filteredResults;
                 this.mainCharacters[c_name].disorder = j.disorder;
                 this.mainCharacters[c_name].explanation = explanationMap[c_name] || "No explanation available.";
+                this.mainCharacters[c_name].abbreviation = j.abbreviation || '';
               } else {
 
                 console.log(c_name, "found has no results : ", filteredResults)
@@ -105,7 +107,8 @@ export default {
         this.filteredCharacters = this.mainCharacters; //geen zoekopdracht, toon alle karakters
       } else {
         this.filteredCharacters = this.mainCharacters.filter(character =>
-          character.disorder.toLowerCase().includes(this.searchQuery.toLowerCase())
+        (character.disorder.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          character.abbreviation?.toLowerCase().includes(this.searchQuery.toLowerCase()))
         );
       }
       console.log("Filtered characters:", this.filteredCharacters);
