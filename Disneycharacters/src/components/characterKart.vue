@@ -82,7 +82,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .front,
 .back {
   position: absolute;

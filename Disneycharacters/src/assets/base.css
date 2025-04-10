@@ -84,7 +84,18 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom right, #a2c0f5, #f9f6ff);
+
   min-height: 100vh;
   margin: 0;
+}
+
+body.classic {
+  background: linear-gradient(to bottom right, #a2c0f5, #f9f6ff);
+  color: #1e3a8a;
+}
+
+body.villain {
+  background-color: #1a0a1f;
+  color: #e91e63;
+  font-family: 'IM Fell English SC', serif !important;
 }

@@ -10,8 +10,10 @@ import CharacterKart from './characterKart.vue';
       class="zoekbalk" />
     <input type="text" v-model="searchQuery2" placeholder="Search by character..." @input="filterCharacters2"
       class="zoekbalk" />
-    <button @click="showRandomCard" class="random-knop">Random Character</button>
-    <button @click="resetFilters" class="random-knop">
+    <button @click="handleButtonClick('random')"
+      :class="['random-knop', { active: selectedButton === 'random' }]">Random
+      Character</button>
+    <button @click="handleButtonClick('all')" :class="['random-knop', { active: selectedButton === 'all' }]">
       Show All Characters
     </button>
   </div>
@@ -50,6 +52,7 @@ export default {
       dateLoaded: false,
       searchQuery: '',
       searchQuery2: '',
+      selectedButton: '',
     };
 
   },
@@ -59,6 +62,15 @@ export default {
   },
 
   methods: {
+    handleButtonClick(type) {
+      this.selectedButton = type;
+      console.log("Button clicked:", type);
+      if (type === 'random') {
+        this.showRandomCard();
+      } else if (type === 'all') {
+        this.resetFilters();
+      }
+    },
 
     showRandomCard() {
       const randomIndex = Math.floor(Math.random() * this.mainCharacters.length);
@@ -145,7 +157,7 @@ export default {
 }
 
 </script>
-<style scoped>
+<style>
 .no-results {
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -214,14 +226,20 @@ export default {
   cursor: pointer;
 }
 
-.random-knop:hover,
-.random-knop:focus {
+.random-knop:hover {
+  box-shadow: 0 0 12px #1E3A8A, 0 0 18px #1E3A8A;
+  color: white;
   border-color: #1E3A8A;
-  box-shadow: 0 0 10px #1E3A8A;
-  transform: scale(1.03);
-  outline: none;
+  transform: scale(1.05);
 }
 
+
+.random-knop.active {
+  background-color: #1E3A8A;
+  /* donkerblauw */
+  color: white;
+  border: 2px solid #1E3A8A;
+}
 
 .loading {
   text-align: center;
