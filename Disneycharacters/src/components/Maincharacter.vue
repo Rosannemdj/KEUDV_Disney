@@ -7,9 +7,9 @@ import CharacterKart from './characterKart.vue';
 <template>
   <div class="zoekbalk-container" v-if="dateLoaded">
     <input type="text" v-model="searchQuery" placeholder="Search by disorder..." @input="filterCharacters"
-      class="zoekbalk" />
+      @focus="resetSelectedButton" class="zoekbalk" />
     <input type="text" v-model="searchQuery2" placeholder="Search by character..." @input="filterCharacters2"
-      class="zoekbalk" />
+      @focus="resetSelectedButton" class="zoekbalk" />
     <button @click="handleButtonClick('random')"
       :class="['random-knop', { active: selectedButton === 'random' }]">Random
       Character</button>
@@ -38,10 +38,11 @@ import CharacterKart from './characterKart.vue';
 
 
   <div v-else class="loading">
-    <img src="../assets/steamb-boat-mickei.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" />
+    <img src="../assets/steamb-boat-mickei.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" class="loading-img" />
     <p class="loading-text">Mickey’s navigating the steamboat of info your way — the data boat is almost docked!</p>
   </div>
 </template>
+
 <script>
 export default {
 
@@ -64,12 +65,15 @@ export default {
   methods: {
     handleButtonClick(type) {
       this.selectedButton = type;
-      console.log("Button clicked:", type);
       if (type === 'random') {
         this.showRandomCard();
       } else if (type === 'all') {
         this.resetFilters();
       }
+    },
+
+    resetSelectedButton() {
+      this.selectedButton = '';
     },
 
     showRandomCard() {
@@ -181,7 +185,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .zoekbalk {
@@ -228,7 +232,7 @@ export default {
 
 .random-knop:hover {
   box-shadow: 0 0 12px #1E3A8A, 0 0 18px #1E3A8A;
-  color: white;
+  color: #1E3A8A;
   border-color: #1E3A8A;
   transform: scale(1.05);
 }
@@ -244,12 +248,16 @@ export default {
 .loading {
   text-align: center;
   position: relative;
-  margin-top: 80px;
+  margin-top: 20px;
 }
 
 .loading-img {
-  width: 120px;
+  width: 250px;
+  /* of bijv. 100px of wat kleiner dan het nu is */
+  max-width: 100%;
   height: auto;
+  display: block;
+  margin: 140px auto 70px auto;
   position: absolute;
   top: 35%;
   left: 50%;
