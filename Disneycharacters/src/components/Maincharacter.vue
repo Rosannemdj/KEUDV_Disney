@@ -10,7 +10,13 @@ import CharacterKart from './characterKart.vue';
       class="zoekbalk" />
     <input type="text" v-model="searchQuery2" placeholder="Search by character..." @input="filterCharacters2"
       class="zoekbalk" />
+    <button @click="showRandomCard" class="random-knop">Random Character</button>
+    <button @click="resetFilters" class="random-knop">
+      Show All Characters
+    </button>
   </div>
+
+
 
   <div v-if="dateLoaded && filteredCharacters.length === 0" class="no-results">
     <img src="../assets/images/mickeymouse.png" alt="" class="no-results-img" />
@@ -53,6 +59,17 @@ export default {
   },
 
   methods: {
+
+    showRandomCard() {
+      const randomIndex = Math.floor(Math.random() * this.mainCharacters.length);
+      const randomCharacter = this.mainCharacters[randomIndex];
+      this.filteredCharacters = [randomCharacter];
+    },
+    resetFilters() {
+      this.searchQuery = '';
+      this.searchQuery2 = '';
+      this.filteredCharacters = this.mainCharacters;
+    },
 
     async fetchdisorder() {
       const explanationMap = {};
@@ -162,7 +179,7 @@ export default {
   text-align: center;
   color: #1E3A8A;
   transition: all 0.3s ease;
-  margin: 100px 0 50px 20px;
+  margin: 20px 0 50px 20px;
 }
 
 .zoekbalk:hover,
@@ -181,6 +198,30 @@ export default {
 .zoekbalk:hover::placeholder {
   color: #1E3A8A;
 }
+
+.random-knop {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
+  color: #1E3A8A;
+  background-color: white;
+  border: 2px solid #94A3B8;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin: 20px 0 50px 20px;
+  cursor: pointer;
+}
+
+.random-knop:hover,
+.random-knop:focus {
+  border-color: #1E3A8A;
+  box-shadow: 0 0 10px #1E3A8A;
+  transform: scale(1.03);
+  outline: none;
+}
+
 
 .loading {
   text-align: center;

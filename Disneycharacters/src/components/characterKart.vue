@@ -151,6 +151,7 @@ export default {
   position: relative;
   /* transition: transform 1.5s; */
   transform-style: preserve-3d;
+  margin-bottom: 10px;
 }
 
 
