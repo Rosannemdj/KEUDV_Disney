@@ -44,7 +44,7 @@ onMounted(() => {
       </select>
     </div>
 
-    <MainCharacter />
+    <MainCharacter :currentTheme="currentTheme" />
   </div>
 </template>
 
@@ -247,7 +247,7 @@ body.villain .random-knop.active {
 
 body.villain .zoekbalk {
   background-color: #2b1c2f;
-  color: #e91e63;
+  color: white;
   border: 2px solid #e91e63;
   font-family: 'IM Fell English SC', serif !important;
 }
@@ -285,5 +285,34 @@ body.villain .no-results {
 body.villain .loading-text {
   color: #e91e63 !important;
   font-family: 'IM Fell English SC', serif !important;
+}
+
+
+body.villain .tooltip {
+  background-color: #e91e63;
+  color: white;
+  font-family: 'IM Fell English SC', serif !important;
+}
+
+body.villain .tooltip:hover {
+  background-color: white;
+  color: #e91e63;
+  border: 2px solid #e91e63;
+  box-shadow: 0 0 10px #e91e63;
+}
+
+body.villain .suggestie-box span {
+  color: #e91e63 !important;
+  font-family: 'IM Fell English SC', serif !important;
+  font-size: 0.6rem;
+}
+
+
+body.villain .suggestie-box span:hover {
+  color: white !important;
+  background-color: #e91e63 !important;
+  border: 2px solid #e91e63 !important;
+  box-shadow: 0 0 10px #e91e63 !important;
+  transform: scale(1.03) !important;
 }
 </style>

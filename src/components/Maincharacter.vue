@@ -18,10 +18,8 @@ import CharacterKart from './characterKart.vue';
 
       <!-- Tinkerbell op de zoekbalk -->
       <div class="tinkerbell-wrapper" @click="toggleSuggestieBox">
-        <img ref="tinkerbellImg"
-          :src="toonSuggestieBox ? '/src/assets/images/tinkerbellDust.png' : '/src/assets/images/tinkerbell.png'"
-          alt="Tinkerbell" :class="['tinkerbell', { 'dust': toonSuggestieBox }]" />
-
+        <img ref="tinkerbellImg" :src="tinkerbellImageSrc" alt="Tinkerbell"
+          :class="['tinkerbell', { 'dust': toonSuggestieBox }]">
         <!-- Tooltip alleen zichtbaar als suggesties niet aan staan -->
         <div v-if="!toonSuggestieBox" class="tooltip">
           Sometimes all you need is a little fairy help.
@@ -35,6 +33,7 @@ import CharacterKart from './characterKart.vue';
         </div>
       </div>
     </div>
+
 
     <!-- Buttons -->
     <button @click="handleButtonClick('random')" :class="['random-knop', { active: selectedButton === 'random' }]">
@@ -72,6 +71,12 @@ import CharacterKart from './characterKart.vue';
 
 <script>
 export default {
+  props: {
+    currentTheme: {
+      type: String,
+      required: true
+    }
+  },
 
   data() {
     return {
@@ -87,9 +92,24 @@ export default {
     };
 
   },
+  computed: {
+    tinkerbellImageSrc() {
+      if (this.toonSuggestieBox) {
+        // Als de suggesties open staan: toon het dust-plaatje, ongeacht theme
+        return '/src/assets/images/tinkerbellDust.png';
+      } else if (this.currentTheme === 'villain') {
+        // Villain theme zonder suggesties open
+        return '/src/assets/images/tinkerbellVillain.png';
+      } else {
+        // Classic theme zonder suggesties
+        return '/src/assets/images/tinkerbell.png';
+      }
+    }
+  },
 
   async mounted() {
     await this.fetchdisorder();
+
   },
 
   methods: {
