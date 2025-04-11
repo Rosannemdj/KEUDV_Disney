@@ -5,14 +5,41 @@ import CharacterKart from './characterKart.vue';
 </script>
 
 <template>
+
   <div class="zoekbalk-container" v-if="dateLoaded">
-    <input type="text" v-model="searchQuery" placeholder="Search by disorder..." @input="filterCharacters"
-      @focus="resetSelectedButton" class="zoekbalk" />
+    <!-- Zoekbalk voor character -->
     <input type="text" v-model="searchQuery2" placeholder="Search by character..." @input="filterCharacters2"
       @focus="resetSelectedButton" class="zoekbalk" />
-    <button @click="handleButtonClick('random')"
-      :class="['random-knop', { active: selectedButton === 'random' }]">Random
-      Character</button>
+
+    <!-- Zoekbalk voor disorder met Tinkerbell OP de balk -->
+    <div class="zoekbalk-wrapper">
+      <input type="text" v-model="searchQuery" placeholder="Search by disorder..." @input="filterCharacters"
+        @focus="clearSearchQuery" class="zoekbalk" />
+
+      <!-- Tinkerbell op de zoekbalk -->
+      <div class="tinkerbell-wrapper" @click="toggleSuggestieBox">
+        <img ref="tinkerbellImg"
+          :src="toonSuggestieBox ? '/src/assets/images/tinkerbellDust.png' : '/src/assets/images/tinkerbell.png'"
+          alt="Tinkerbell" :class="['tinkerbell', { 'dust': toonSuggestieBox }]" />
+
+        <!-- Tooltip alleen zichtbaar als suggesties niet aan staan -->
+        <div v-if="!toonSuggestieBox" class="tooltip">
+          Sometimes all you need is a little fairy help.
+        </div>
+
+        <!-- Suggesties op dezelfde plek als de tooltip -->
+        <div v-if="toonSuggestieBox" class="suggestie-box left">
+          <span v-for="disorder in randomDisorders" :key="disorder" @click="selectSuggestie(disorder)">
+            {{ disorder }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <button @click="handleButtonClick('random')" :class="['random-knop', { active: selectedButton === 'random' }]">
+      Random Character
+    </button>
     <button @click="handleButtonClick('all')" :class="['random-knop', { active: selectedButton === 'all' }]">
       Show All Characters
     </button>
@@ -54,6 +81,9 @@ export default {
       searchQuery: '',
       searchQuery2: '',
       selectedButton: '',
+      allDisorders: [],
+      randomDisorders: [],
+      toonSuggestieBox: false,
     };
 
   },
@@ -63,6 +93,28 @@ export default {
   },
 
   methods: {
+    clearSearchQuery() {
+      this.searchQuery = '';
+      this.filteredCharacters = this.mainCharacters;
+      this.searchSuggestions = [];
+      this.toonSuggestieBox = false;
+    },
+    getRandomDisorders() {
+      const disorders = [...new Set(characterDisorders.map(c => c.disorder))];
+      const shuffled = disorders.sort(() => 0.5 - Math.random());
+      this.randomDisorders = shuffled.slice(0, 2);
+    },
+    toggleSuggestieBox() {
+      this.toonSuggestieBox = !this.toonSuggestieBox;
+      if (this.toonSuggestieBox) {
+        this.getRandomDisorders();
+      }
+    },
+    selectSuggestie(disorder) {
+      this.searchQuery = disorder;       // vul het in de zoekbalk
+      this.filterCharacters();           // filter direct de karakters
+      this.toonSuggestieBox = false;     // verberg suggesties na klik (optioneel)
+    },
     handleButtonClick(type) {
       this.selectedButton = type;
       if (type === 'random') {
@@ -107,7 +159,7 @@ export default {
               if (filteredResults.length > 1) {
                 const mostFilmsCharacter = filteredResults.reduce((prev, current) => (prev.films.length > current.films.length) ? prev : current);
                 //console.log(c_name, "found most films character ", mostFilmsCharacter)
-                console.log(mostFilmsCharacter.films?.[0])
+                // console.log(mostFilmsCharacter.films?.[0])
                 this.mainCharacters[c_name] = mostFilmsCharacter;
                 this.mainCharacters[c_name].disorder = j.disorder;
                 this.mainCharacters[c_name].explanation = explanationMap[c_name] || "No explanation available.";
@@ -132,20 +184,31 @@ export default {
       this.mainCharacters = Object.values(this.mainCharacters).map(c => toRaw(c))
       this.filteredCharacters = this.mainCharacters;
       console.log(this.mainCharacters)
+      const disorders = characterDisorders.map(c => c.disorder);
+      this.allDisorders = [...new Set(disorders)].sort();
       this.dateLoaded = true
     },
     //dit is het stukje dat de input vergelijkt met de data van de api en de json file voor de stoornissen
+    //
     filterCharacters() {
-      if (this.searchQuery.trim() === '') {
-        this.filteredCharacters = this.mainCharacters; //geen zoekopdracht, toon alle karakters
+      const input = this.searchQuery.trim().toLowerCase();
+      this.selectedButton = '';
+
+      if (input === '') {
+        this.filteredCharacters = this.mainCharacters;
+        this.searchSuggestions = this.allDisorders.slice(0, 5); // top 5 suggesties als start
       } else {
         this.filteredCharacters = this.mainCharacters.filter(character =>
-        (character.disorder.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-          character.abbreviation?.toLowerCase().includes(this.searchQuery.toLowerCase()))
+          character.disorder.toLowerCase().includes(input) ||
+          character.abbreviation?.toLowerCase().includes(input)
+        );
+
+        this.searchSuggestions = this.allDisorders.filter(disorder =>
+          disorder.toLowerCase().includes(input)
         );
       }
-      console.log("Filtered characters:", this.filteredCharacters);
     },
+
     filterCharacters2() {
       if (this.searchQuery2.trim() === '') {
         this.filteredCharacters = this.mainCharacters; //geen zoekopdracht, toon alle karakters
@@ -195,7 +258,7 @@ export default {
   text-align: center;
   color: #1E3A8A;
   transition: all 0.3s ease;
-  margin: 20px 0 50px 20px;
+  margin: 40px 0 50px 20px;
 }
 
 .zoekbalk:hover,
@@ -226,7 +289,7 @@ export default {
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   transition: all 0.3s ease;
-  margin: 20px 0 50px 20px;
+  margin: 40px 0 50px 20px;
   cursor: pointer;
 }
 
@@ -280,5 +343,114 @@ export default {
   width: 120px;
   height: auto;
   margin-bottom: 12px;
+}
+
+
+.zoekbalk-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tinkerbell-wrapper {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  width: 35px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.tinkerbell {
+  width: 100px;
+  height: auto;
+  position: relative;
+  top: -10px;
+  right: 40px;
+  transition: transform 0.2s ease;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.tinkerbell.fade-out {
+  opacity: 0;
+}
+
+.tinkerbell:hover {
+  transform: scale(1.1);
+}
+
+.tinkerbell.dust {
+  width: 120px;
+  top: -45px;
+}
+
+/* Tooltip links van Tinkerbell */
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 20%;
+  right: 160%;
+  transform: translateY(-50%);
+  background: #1E3A8A;
+  color: white;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  z-index: 10;
+}
+
+
+.tooltip:hover {
+  background-color: white;
+  border: 2px solid #1E3A8A;
+  color: #1E3A8A;
+}
+
+.tinkerbell-wrapper:hover .tooltip {
+  display: block;
+}
+
+/* Suggestiebox links van Tinkerbell */
+.suggestie-box {
+  position: absolute;
+  top: 5%;
+  right: 120%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  z-index: 10;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+
+
+.suggestie-box span {
+  background-color: white;
+  color: #1E3A8A;
+  border: 1px solid #1E3A8A;
+  border-radius: 999px;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  font-size: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.suggestie-box span:hover {
+  background-color: #1E3A8A;
+  color: white;
+  transform: scale(1.05);
 }
 </style>

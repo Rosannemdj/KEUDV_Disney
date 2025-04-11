@@ -159,7 +159,7 @@ export default {
   line-height: 1.5;
   font-weight: bold;
   text-align: center;
-  margin: 20px auto;
+  margin: 0px auto;
 }
 
 
