@@ -67,43 +67,16 @@ export default {
 
 
 <style>
-/* .site-header {
+/* === Algemene Header Styles === */
+
+.site-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px 20px 0px;
-  text-align: center;
+  align-items: flex-start;
+  padding: 10px 30px 0 15px;
   font-family: 'Poppins', sans-serif;
 }
 
-
-
-#logo {
-  max-width: 120px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-#logo-villian {
-  max-width: 130px;
-  height: auto;
-  filter: drop-shadow(0 0 10px #e91e63);
-}
-
-.site-header h1 {
-  font-size: 2rem;
-  color: #1E3A8A;
-  margin-bottom: 10px;
-}
-
-.header-subtitle {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #1E3A8A;
-  max-width: 600px;
-  line-height: 1.5;
-} */
-/* Zet logo + titel links naast elkaar */
 .logo-title {
   display: flex;
   align-items: center;
@@ -111,26 +84,6 @@ export default {
   margin-top: 3px;
 }
 
-/* Header zelf blijft bovenaan, maar niet meer gecentreerd */
-.site-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  /* links uitlijnen */
-  padding: 10px 30px 0 15px;
-  font-family: 'Poppins', sans-serif;
-}
-
-.site-header h1 {
-  font-size: 0.8rem;
-  /* kleiner maken */
-  margin: 0;
-  /* weghalen van standaard ruimte */
-  color: #1E3A8A;
-  line-height: 1;
-}
-
-/* Logo */
 #logo,
 #logo-villian {
   max-width: 120px;
@@ -138,30 +91,27 @@ export default {
   margin-bottom: 0;
 }
 
-/* Schaduw alleen voor villain-logo */
 #logo-villian {
   filter: drop-shadow(0 0 10px #e91e63);
 }
 
-/* Titel */
 .site-header h1 {
   font-size: 2rem;
-  color: #1E3A8A;
   margin: 0;
+  color: #1E3A8A;
 }
 
-/* Subtitle - gecentreerd en los onder header */
 .header-subtitle {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: bold;
   color: #1E3A8A;
   max-width: 800px;
   line-height: 1.5;
-  font-weight: bold;
   text-align: center;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
+/* === Thema Containers === */
 
 .app {
   transition: all 0.4s ease-in-out;
@@ -179,8 +129,8 @@ export default {
   font-family: 'IM Fell English SC', serif !important;
 }
 
+/* === Theme Switcher === */
 
-/* Style de theme switcher */
 .theme-switcher {
   display: flex;
   justify-content: center;
@@ -203,7 +153,6 @@ export default {
   transition: all 0.3s ease;
 }
 
-
 .theme-switcher label {
   font-size: 1.5rem;
 }
@@ -214,35 +163,14 @@ export default {
   border-color: #e91e63;
 }
 
+/* === Villain Thema Styling === */
 
-
-body.villain .front:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 0 20px rgba(233, 30, 99, 0.5), 0 0 40px #e91e63;
-  cursor: pointer;
-}
-
-body.villain .random-knop:hover {
-  box-shadow: 0 0 12px #e91e63, 0 0 18px #e91e63 !important;
-  color: #1a0a1f !important;
-  border-color: #e91e63 !important;
-  transform: scale(1.05) !important;
-}
-
-body.villain .random-knop {
-  color: #e91e63;
-  background-color: white;
-  border: 2px solid #1a0a1f;
+body.villain .site-header h1,
+body.villain .header-subtitle,
+body.villain .no-results,
+body.villain .loading-text {
+  color: #e91e63 !important;
   font-family: 'IM Fell English SC', serif !important;
-}
-
-
-body.villain .random-knop.active {
-  background-color: #e91e63;
-  /* felroze/rood */
-  color: #1a0a1f;
-  border: 2px solid #e91e63;
-  box-shadow: 0 0 10px #e91e63;
 }
 
 body.villain .zoekbalk {
@@ -251,8 +179,6 @@ body.villain .zoekbalk {
   border: 2px solid #e91e63;
   font-family: 'IM Fell English SC', serif !important;
 }
-
-
 
 body.villain .zoekbalk:hover,
 body.villain .zoekbalk:focus {
@@ -270,23 +196,34 @@ body.villain .zoekbalk:hover::placeholder {
   color: #ffffff;
 }
 
-body.villain .site-header h1,
-body.villain .header-subtitle {
-  color: #e91e63 !important;
+body.villain .random-knop {
+  color: #e91e63;
+  background-color: white;
+  border: 2px solid #1a0a1f;
   font-family: 'IM Fell English SC', serif !important;
 }
 
-
-body.villain .no-results {
-  color: #e91e63 !important;
-  font-family: 'IM Fell English SC', serif !important;
+body.villain .random-knop:hover {
+  box-shadow: 0 0 12px #e91e63, 0 0 18px #e91e63 !important;
+  color: #1a0a1f !important;
+  border-color: #e91e63 !important;
+  transform: scale(1.05) !important;
 }
 
-body.villain .loading-text {
-  color: #e91e63 !important;
-  font-family: 'IM Fell English SC', serif !important;
+body.villain .random-knop.active {
+  background-color: #e91e63;
+  color: #1a0a1f;
+  border: 2px solid #e91e63;
+  box-shadow: 0 0 10px #e91e63;
 }
 
+body.villain .front:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 20px rgba(233, 30, 99, 0.5), 0 0 40px #e91e63;
+  cursor: pointer;
+}
+
+/* === Tooltip en Suggesties === */
 
 body.villain .tooltip {
   background-color: #e91e63;
@@ -306,7 +243,6 @@ body.villain .suggestie-box span {
   font-family: 'IM Fell English SC', serif !important;
   font-size: 0.6rem;
 }
-
 
 body.villain .suggestie-box span:hover {
   color: white !important;

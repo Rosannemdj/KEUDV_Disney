@@ -1,111 +1,217 @@
 [
-    { "name": "Rapunzel", 
+  {
+    "name": "Rapunzel",
     "disorder": "Post-Traumatic Stress Disorder",
-    "abbreviation": "PTSD" ,
-    "explanation": "After being isolated in a tower for most of her life, she shows signs of PTSD through her confusion, fear, and emotional swings when faced with the outside world."},
+    "abbreviation": "PTSD",
+    "explanation": "After being isolated in a tower for most of her life, she shows signs of PTSD through her confusion, fear, and emotional swings when faced with the outside world."
+  },
 
-    { "name": "Donald Duck", 
-    "disorder": "Intermittent Explosive Disorder" ,
-    "abbreviation": "IED" , 
-    "explanation":"Donald’s frequent and uncontrollable outbursts reflect classic signs of Intermittent Explosive Disorder."},
+  {
+    "name": "Donald Duck",
+    "disorder": "Intermittent Explosive Disorder",
+    "abbreviation": "IED",
+    "explanation": "Donald’s frequent and uncontrollable outbursts reflect classic signs of Intermittent Explosive Disorder."
+  },
 
-    { "name": "Dumbo", 
+  {
+    "name": "Dumbo",
     "disorder": "Social anxiety disorder",
-    "abbreviation": "SAD" , 
-    "explanation":"Dumbo avoids social interaction and feels intense fear of being judged due to his ears, showing signs of social anxiety." },
+    "abbreviation": "SAD",
+    "explanation": "Dumbo avoids social interaction and feels intense fear of being judged due to his ears, showing signs of social anxiety."
+  },
 
-    { "name": "Simba", 
+  {
+    "name": "Simba",
     "disorder": "Post-Traumatic Stress Disorder",
-    "abbreviation": "PTSD" , 
-    "explanation": "Simba exhibits PTSD after witnessing Mufasa’s death and experiencing guilt, nightmares, and avoidance."},
+    "abbreviation": "PTSD",
+    "explanation": "Simba exhibits PTSD after witnessing Mufasa’s death and experiencing guilt, nightmares, and avoidance."
+  },
 
-    {"name": "Winnie the Pooh", 
-    "disorder": "eating disorder & impulse control disorder", 
+  {
+    "name": "Winnie the Pooh",
+    "disorder": "eating disorder & impulse control disorder",
     "abbreviation": "ICD",
-    "explanation": "Pooh's constant eating and difficulty resisting honey can reflect disordered eating and poor impulse control."},
+    "explanation": "Pooh's constant eating and difficulty resisting honey can reflect disordered eating and poor impulse control."
+  },
 
-    {"name": "Piglet", 
-    "disorder": "Anxiety disorder", 
-    "explanation": "Piglet is nervous, overthinks situations, and often fears the worst—typical behaviors of an anxiety disorder."},
+  {
+    "name": "Piglet",
+    "disorder": "Anxiety disorder",
+    "explanation": "Piglet is nervous, overthinks situations, and often fears the worst—typical behaviors of an anxiety disorder."
+  },
 
-    {"name": "Tigger", 
+  {
+    "name": "Tigger",
     "disorder": "Attention Deficit/Hyperactivity Disorder",
-    "abbreviation": "ADHD" ,	 
-    "explanation":"Tigger’s impulsiveness, constant motion, and lack of attention are classic signs of ADHD."},
+    "abbreviation": "ADHD",
+    "explanation": "Tigger’s impulsiveness, constant motion, and lack of attention are classic signs of ADHD."
+  },
 
-    {"name": "Anna",
-     "disorder": "Attention Deficit/Hyperactivity Disorder", 
-      "abbreviation": "ADHD" ,
-     "explanation": "Anna’s impulsive decisions and restlessness show characteristics of ADHD, especially in social contexts."},
+  {
+    "name": "Anna",
+    "disorder": "Attention Deficit/Hyperactivity Disorder",
+    "abbreviation": "ADHD",
+    "explanation": "Anna’s impulsive decisions and restlessness show characteristics of ADHD, especially in social contexts."
+  },
 
-    {"name": "Elsa", 
+  {
+    "name": "Elsa",
     "disorder": "Major depressive disorder",
-    "abbreviation": "MDD" , 
-    "explanation": "Elsa isolates herself, suppresses emotions, and feels hopeless,symptoms of major depressive disorder."},
+    "abbreviation": "MDD",
+    "explanation": "Elsa isolates herself, suppresses emotions, and feels hopeless,symptoms of major depressive disorder."
+  },
 
-    {"name": "Queen Of hearts", 
+  {
+    "name": "Queen Of hearts",
     "disorder": "Bipolar disorder",
-    "abbreviation": "BD" , 
-    "explanation": "Her intense mood swings and impulsive decisions suggest bipolar disorder."},
+    "abbreviation": "BD",
+    "explanation": "Her intense mood swings and impulsive decisions suggest bipolar disorder."
+  },
 
-    {"name": "Alice", 
-    "disorder": "Schizophrenia", 
-    "explanation": "Alice experiences hallucinations and disconnection from reality, often associated with schizophrenia."},
+  {
+    "name": "Alice",
+    "disorder": "Schizophrenia",
+    "explanation": "Alice experiences hallucinations and disconnection from reality, often associated with schizophrenia."
+  },
 
-    {"name": "Scar", 
+  {
+    "name": "Scar",
     "disorder": "Antisocial personality disorder",
-    "abbreviation": "APD" , 
-    "explanation": "Scar manipulates, lacks empathy, and shows no remorse,traits of antisocial personality disorder."},
+    "abbreviation": "APD",
+    "explanation": "Scar manipulates, lacks empathy, and shows no remorse,traits of antisocial personality disorder."
+  },
 
-    {"name": "Beast", 
-    "disorder": "Intermittent explosive disorder", 
-    "abbreviation": "IED" ,	
-    "explanation": "Beast’s violent outbursts and inability to control his anger indicate intermittent explosive disorder."},
+  {
+    "name": "Beast",
+    "disorder": "Intermittent explosive disorder",
+    "abbreviation": "IED",
+    "explanation": "Beast’s violent outbursts and inability to control his anger indicate intermittent explosive disorder."
+  },
 
-    {"name": "Gaston", 
+  {
+    "name": "Gaston",
     "disorder": "Narcissistic personality",
-    "abbreviation": "NPD" , 
-    "explanation": "Gaston exhibits a need for admiration and superiority, showing narcissistic personality traits."},
+    "abbreviation": "NPD",
+    "explanation": "Gaston exhibits a need for admiration and superiority, showing narcissistic personality traits."
+  },
 
-    {"name": "Belle", 
-    "disorder": "Stockholm syndrome & Bibliomania", 
-    "explanation": "Belle’s emotional bond with her captor hints at Stockholm syndrome, and her obsession with books suggests bibliomania."},
+  {
+    "name": "Belle",
+    "disorder": "Stockholm syndrome & Bibliomania",
+    "explanation": "Belle’s emotional bond with her captor hints at Stockholm syndrome, and her obsession with books suggests bibliomania."
+  },
 
-    {"name": "Ariel", 
-    "disorder": "Obsessive compulsive disorder & disposophobia", 
-    "abbreviation": "OCD" ,	
-    "explanation":  "Ariel’s compulsive collecting and repetitive behaviors point to OCD and hoarding (disposophobia)."},
+  {
+    "name": "Ariel",
+    "disorder": "Obsessive compulsive disorder & disposophobia",
+    "abbreviation": "OCD",
+    "explanation": "Ariel’s compulsive collecting and repetitive behaviors point to OCD and hoarding (disposophobia)."
+  },
 
-    {"name": "Eeyore", 
-    "disorder": "Dysthymia", 
-    "explanation":"Eeyore consistently appears downcast, hopeless, and fatigued—classic dysthymia symptoms."},
+  {
+    "name": "Eeyore",
+    "disorder": "Dysthymia",
+    "explanation": "Eeyore consistently appears downcast, hopeless, and fatigued—classic dysthymia symptoms."
+  },
 
-    {"name": "Aurora", 
+  {
+    "name": "Aurora",
     "disorder": "Major depressive disorder",
-    "abbreviation": "MDD" , 
-    "explanation": "Aurora shows withdrawal, low energy, and passivity, often linked to major depressive disorder."},
+    "abbreviation": "MDD",
+    "explanation": "Aurora shows withdrawal, low energy, and passivity, often linked to major depressive disorder."
+  },
 
-    {"name": "Maleficent", 
-    "disorder": "Borderline personality disorder", 
-    "abbreviation": "BPD" ,
-    "explanation":"Maleficent shows unstable relationships, intense emotions, and impulsivity—traits of BPD."},
+  {
+    "name": "Maleficent",
+    "disorder": "Borderline personality disorder",
+    "abbreviation": "BPD",
+    "explanation": "Maleficent shows unstable relationships, intense emotions, and impulsivity—traits of BPD."
+  },
 
-    {"name": "Jasmine", "disorder": "Bipolar disorder", "explanation": "Jasmine’s emotional highs and lows, and rebellious impulsivity, suggest bipolar disorder."},
-    {"name": "Jafar", "disorder": "Antisocial personality disorder", "explanation":"Jafar's manipulation, charm masking cruelty, and lack of remorse reflect antisocial personality disorder."},
-    {"name": "The evil queen", "disorder": "Narcissistic personality disorder", "explanation":"Her obsession with beauty and superiority reflect narcissistic personality disorder."},
-    {"name": "Snow White", "disorder": "Obsessive compulsive disorder", "explanation": "Her perfectionism, repetitive cleaning, and orderliness suggest obsessive compulsive disorder."},
-    {"name": "Pocahontas", "disorder": "Depression", "explanation":"Pocahontas often shows deep sadness, disinterest, and detachment—linked to depression."},
-    {"name": "Mulan", "disorder": "Atelopobia", "explanation": "Mulan hides her true self due to extreme fear of inadequacy, a key symptom of atelophobia."},
-    {"name": "Merida", "disorder": "Avoidant personality disorder", "explanation":"Merida avoids emotional closeness and fears judgment—core signs of avoidant personality disorder."},
-    {"name": "Cinderella", "disorder": "Dependent personality disorder", "explanation": "Cinderella’s reliance on others and fear of being alone point to dependent personality disorder."},
-    {"name": "Peter Pan", "disorder": "Peter pan syndrome", "explanation": "Peter refuses to grow up, avoids responsibility, and lives in fantasy, fitting Peter Pan syndrome."},
-    {"name": "Tinker bell", "disorder": "Histrionic personality disorder", "explanation":"Tinker Bell craves attention and reacts dramatically—traits of histrionic personality disorder."},
-    {"name": "Captain Hook", "disorder": "Post traumatic stress disorder", "explanation": "Haunted by past trauma and his fear of the crocodile, Hook shows signs of PTSD."},
-    {"name": "Syndrome", "disorder": "Antisocial personality disorder",  "explanation":"Syndrome lacks empathy and uses manipulation and cruelty—hallmarks of antisocial personality disorder."},
-    {"name": "Mei Lee", "disorder": "Social anxiety disorder", "explanation":"Mei Lee fears embarrassment and avoids social judgment, consistent with social anxiety disorder."},
-    {"name": "Emilia", "disorder": "Borderline personality disorder"},
-    {"name": "Mirabel Madrigal", "disorder": "Impostor syndrome", "explanation": "Emilia’s unstable emotions, intense relationships, and self-image shifts point to borderline personality disorder."},
-    {"name": "Sadness", "disorder": "Depression", "explanation": "Sadness expresses hopelessness, lack of motivation, and persistent sadness—hallmarks of depression."},
-    {"name": "Wreck it raplh", "disorder": "Impulse control disorder", "explanation": "Ralph’s difficulty controlling anger and acting without thinking show impulse control disorder."},
-    {"name": "Hades", "disorder": "Bipolar disorder", "explanation":  "Hades’ grandiosity, sudden rage, and mood swings indicate bipolar disorder."}
-  ]
+  {
+    "name": "Jasmine",
+    "disorder": "Bipolar disorder",
+    "explanation": "Jasmine’s emotional highs and lows, and rebellious impulsivity, suggest bipolar disorder."
+  },
+  {
+    "name": "Jafar",
+    "disorder": "Antisocial personality disorder",
+    "explanation": "Jafar's manipulation, charm masking cruelty, and lack of remorse reflect antisocial personality disorder."
+  },
+  {
+    "name": "The evil queen",
+    "disorder": "Narcissistic personality disorder",
+    "explanation": "Her obsession with beauty and superiority reflect narcissistic personality disorder."
+  },
+  {
+    "name": "Snow White",
+    "disorder": "Obsessive compulsive disorder",
+    "explanation": "Her perfectionism, repetitive cleaning, and orderliness suggest obsessive compulsive disorder."
+  },
+  {
+    "name": "Pocahontas",
+    "disorder": "Depression",
+    "explanation": "Pocahontas often shows deep sadness, disinterest, and detachment—linked to depression."
+  },
+  {
+    "name": "Mulan",
+    "disorder": "Atelopobia",
+    "explanation": "Mulan hides her true self due to extreme fear of inadequacy, a key symptom of atelophobia."
+  },
+  {
+    "name": "Merida",
+    "disorder": "Avoidant personality disorder",
+    "explanation": "Merida avoids emotional closeness and fears judgment—core signs of avoidant personality disorder."
+  },
+  {
+    "name": "Cinderella",
+    "disorder": "Dependent personality disorder",
+    "explanation": "Cinderella’s reliance on others and fear of being alone point to dependent personality disorder."
+  },
+  {
+    "name": "Peter Pan",
+    "disorder": "Peter pan syndrome",
+    "explanation": "Peter refuses to grow up, avoids responsibility, and lives in fantasy, fitting Peter Pan syndrome."
+  },
+  {
+    "name": "Tinker bell",
+    "disorder": "Histrionic personality disorder",
+    "explanation": "Tinker Bell craves attention and reacts dramatically—traits of histrionic personality disorder."
+  },
+  {
+    "name": "Captain Hook",
+    "disorder": "Post traumatic stress disorder",
+    "explanation": "Haunted by past trauma and his fear of the crocodile, Hook shows signs of PTSD."
+  },
+  {
+    "name": "Syndrome",
+    "disorder": "Antisocial personality disorder",
+    "explanation": "Syndrome lacks empathy and uses manipulation and cruelty—hallmarks of antisocial personality disorder."
+  },
+  {
+    "name": "Mei Lee",
+    "disorder": "Social anxiety disorder",
+    "explanation": "Mei Lee fears embarrassment and avoids social judgment, consistent with social anxiety disorder."
+  },
+  { "name": "Emilia", "disorder": "Borderline personality disorder" },
+  {
+    "name": "Mirabel Madrigal",
+    "disorder": "Impostor syndrome",
+    "explanation": "Emilia’s unstable emotions, intense relationships, and self-image shifts point to borderline personality disorder."
+  },
+  {
+    "name": "Sadness",
+    "disorder": "Depression",
+    "explanation": "Sadness expresses hopelessness, lack of motivation, and persistent sadness—hallmarks of depression."
+  },
+  {
+    "name": "Wreck it raplh",
+    "disorder": "Impulse control disorder",
+    "explanation": "Ralph’s difficulty controlling anger and acting without thinking show impulse control disorder."
+  },
+  {
+    "name": "Hades",
+    "disorder": "Bipolar disorder",
+    "explanation": "Hades’ grandiosity, sudden rage, and mood swings indicate bipolar disorder."
+  }
+]
