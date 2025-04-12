@@ -214,5 +214,6 @@ export default {
 
 .disorder-explanation {
   margin: 10px;
+  font-weight: normal;
 }
 </style>
