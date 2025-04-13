@@ -307,11 +307,11 @@ export default {
 }
 
 .loading-img {
-  width: 250px;
+  width: 450px;
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 160px auto 70px auto;
+  margin: 240px auto 70px auto;
   position: absolute;
   top: 35%;
   left: 50%;
