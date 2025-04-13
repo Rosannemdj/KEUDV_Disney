@@ -1,31 +1,33 @@
+/* 📦 Basisstijl importeren met variabelen en reset */
 @import './base.css';
 
+/* 📐 Centraal layout container (#app) */
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  max-width: 1280px; /* Max breedte van je content */
+  margin: 0 auto; /* Horizontaal centreren */
+  padding: 2rem; /* Ruimte rondom content */
+  font-weight: normal; /* Standaard tekstdikte */
 }
 
+/* 🔗 Stijling voor links en elementen met class "green" */
 a,
 .green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+  text-decoration: none; /* Geen onderlijning */
+  color: hsla(160, 100%, 37%, 1); /* Groenige tint */
+  transition: 0.4s; /* Zachte overgang bij hover */
   padding: 3px;
 }
 
+/* 💻 Hover-effect alleen op apparaten met muis */
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: hsla(160, 100%, 37%, 0.2); /* Lichtgroene achtergrond */
   }
 }
 
+/* 🖥 Specifiek voor grotere schermen */
 @media (min-width: 1024px) {
-  body {
-  }
-
   #app {
-    padding: 0 2rem;
+    padding: 0 2rem; /* Iets andere padding op desktops */
   }
 }

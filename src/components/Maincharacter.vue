@@ -67,7 +67,8 @@ import CharacterKart from './characterKart.vue';
 
   <!-- Laadscherm met Mickey-animatie als data nog aan het laden is -->
   <div v-else class="loading">
-    <img src="../assets/images/steamb-boat-mickey.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF" class="loading-img" />
+    <img src="../assets/images/steamb-boat-mickey.gif" alt="Mickey Mouse Steamboat Willie 1928 GIF"
+      class="loading-img" />
     <p class="loading-text">
       Mickey’s navigating the steamboat of info your way — the data boat is almost docked!
     </p>
@@ -310,7 +311,7 @@ export default {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 140px auto 70px auto;
+  margin: 160px auto 70px auto;
   position: absolute;
   top: 35%;
   left: 50%;
