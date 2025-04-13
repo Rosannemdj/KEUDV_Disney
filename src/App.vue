@@ -13,8 +13,18 @@ watch(currentTheme, (newTheme) => {
 })
 
 onMounted(() => {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+
+  // Eerste keer instellen
+  currentTheme.value = prefersDark.matches ? 'villain' : 'classic'
   document.body.classList.add(currentTheme.value)
+
+  // Luisteren naar veranderingen
+  prefersDark.addEventListener('change', (e) => {
+    currentTheme.value = e.matches ? 'villain' : 'classic'
+  })
 })
+
 </script>
 
 <template>
