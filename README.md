@@ -12,7 +12,7 @@ Het project combineert educatie, bewustwording en een vleugje entertainment om m
 
 ## 📁 Projectstructuur
 
-| Pad / Bestand            | Beschrijving                                           |
+| Bestand                  | Beschrijving                                           |
 | ------------------------ | ------------------------------------------------------ |
 | `assets/images/`         | Alle gebruikte afbeeldingen (logo's, Tinkerbell, enz.) |
 | `characterdisorder.json` | JSON-bestand met stoornisinformatie per personage      |
@@ -38,10 +38,15 @@ Het project combineert educatie, bewustwording en een vleugje entertainment om m
 
 Clone het project of download de bestanden.
 
-Voer in de terminal de volgende commando’s uit:
+Voer in de terminal de volgende commando uit:
 
 ```sh
 npm install
+```
+
+Als de installatie gelukt is dan het volgende commando uitvoeren om de applicatie te laten starten:
+
+```sh
 npm run dev
 ```
 
